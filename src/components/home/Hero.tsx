@@ -40,16 +40,16 @@ export default function Hero({ courses = [] }: { courses?: { id: string, title: 
   };
 
   return (
-    <section className="relative w-[95%] mx-auto my-[10px] mb-[30px] flex flex-col lg:flex-row gap-6">
+    <section className="relative w-[95%] max-w-[1300px] mx-auto my-[10px] mb-[30px] flex flex-col lg:flex-row gap-6">
       {/* Left side: Slider */}
-      <div className="relative w-full lg:w-2/3 xl:w-3/4 aspect-video overflow-hidden rounded-[40px] md:rounded-[50px] shadow-[0_5px_20px_rgba(0,0,0,0.15)] flex-shrink-0 bg-white">
+      <div className="relative w-full lg:w-2/3 xl:w-3/4 max-h-[400px] lg:max-h-[500px] aspect-[16/7] lg:aspect-auto overflow-hidden rounded-[40px] md:rounded-[50px] shadow-[0_5px_20px_rgba(0,0,0,0.15)] flex-shrink-0 bg-white">
         <div className="w-full h-full relative">
            {slides.map((src, index) => (
             <img
               key={index}
               src={src}
               alt={`Banner ${index + 1}`}
-              className={`absolute w-full h-full object-contain transition-opacity duration-800 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              className={`absolute w-full h-full object-cover lg:object-contain transition-opacity duration-800 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
             />
           ))}
         </div>
@@ -74,15 +74,15 @@ export default function Hero({ courses = [] }: { courses?: { id: string, title: 
         
         <div className="flex justify-center px-4 md:px-8 translate-y-4 z-0 relative">
           <div className="bg-primary rounded-t-[30px] py-[18px] shadow-[-2px_-4px_10px_rgba(0,0,0,0.1)] font-bold text-white text-center text-[15px] w-[75%] md:w-[65%] uppercase tracking-wide">
-            Quick Inquiry
+            Free Trial
           </div>
         </div>
 
         {/* Form Container */}
         <div className="bg-white rounded-[30px] shadow-[0_10px_40px_rgba(0,0,0,0.15)] p-6 md:p-8 flex flex-col justify-center z-10 relative">
           <div className="text-center mb-6">
-            <h3 className="text-xl md:text-2xl font-bold text-primary-dark tracking-wide uppercase" suppressHydrationWarning>
-              GET IN TOUCH <span className="text-secondary">WITH US</span>
+            <h3 className="text-lg md:text-xl font-bold text-primary-dark tracking-wide uppercase" suppressHydrationWarning>
+              Reserve your seat <span className="text-secondary">for free demo</span>
             </h3>
           </div>
 
