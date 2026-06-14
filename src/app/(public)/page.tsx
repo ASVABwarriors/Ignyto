@@ -4,6 +4,8 @@ import About from "@/components/home/About";
 import SummerCamps from "@/components/home/SummerCamps";
 import Tutoring from "@/components/home/Tutoring";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const courses = await prisma.course.findMany({
     orderBy: { createdAt: "desc" },
