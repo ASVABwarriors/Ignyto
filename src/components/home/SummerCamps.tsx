@@ -13,20 +13,20 @@ export default function SummerCamps({ courses }: { courses: ExtendedCourse[] }) 
   return (
     <section id="summer-camps" className="w-[90%] max-w-[1300px] mx-auto my-[80px]">
       <div className="mb-[40px]">
-        <span className="text-[14px] font-bold tracking-[2px] text-primary relative after:content-[''] after:w-[60px] after:h-[2px] after:bg-primary after:absolute after:top-1/2 after:ml-[12px]">
+        <span className="text-[12px] md:text-[14px] font-bold tracking-[2px] text-primary relative after:content-[''] after:w-[40px] md:after:w-[60px] after:h-[2px] after:bg-primary after:absolute after:top-1/2 after:ml-[12px]">
           THE FUTURE OF LEARNING
         </span>
-        <H2 className="text-[55px] text-primary mt-[8px] mb-[10px] md:text-[42px] font-bold">
+        <H2 className="text-[32px] md:text-[42px] text-primary mt-[10px] mb-[10px] font-bold">
           Summer Camps
         </H2>
-        <p className="text-[18px] text-[#555]">
+        <p className="text-[16px] md:text-[18px] text-[#555]">
           Challenge your logic and skills with our premier academic competitions.
         </p>
       </div>
       
-      <div className="flex overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-3 gap-[20px] md:gap-[25px] pb-4 scrollbar-hide">
+      <div className="flex overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-3 gap-[20px] md:gap-[25px] lg:gap-[30px] pt-4 pb-4 -mt-4 scrollbar-hide lg:max-w-[1100px] xl:max-w-[1050px] mx-auto">
         {displayCourses.map((course) => (
-          <div key={course.id} className="bg-white rounded-[20px] overflow-hidden shadow-[0_5px_20px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-2 min-w-[85vw] sm:min-w-[320px] lg:w-full snap-center shrink-0">
+          <div key={course.id} className="bg-white rounded-[20px] overflow-hidden shadow-[0_5px_20px_rgba(0,0,0,0.08)] border border-gray-200 transition-all duration-300 hover:-translate-y-2 hover:border-primary min-w-[85vw] sm:min-w-[320px] lg:w-full snap-center shrink-0">
             <div className="card-image">
               {course.thumbnailUrl ? (
                 <img src={course.thumbnailUrl} alt={course.title} className="w-full h-[180px] md:h-[200px] object-cover block" />

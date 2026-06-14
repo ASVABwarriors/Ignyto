@@ -9,19 +9,19 @@ export default function Tutoring() {
         
         {/* LEFT CONTENT */}
         <div className="mb-[30px] md:mb-0 lg:mb-0">
-          <div className="inline-flex items-center gap-[6px] md:gap-[10px] bg-primary-light text-primary px-[18px] md:px-[24px] py-[10px] md:py-[14px] rounded-[50px] text-[14px] md:text-[20px] font-semibold mb-[12px]">
+          <div className="inline-flex items-center gap-[6px] md:gap-[10px] bg-primary-light text-primary px-[18px] md:px-[24px] py-[10px] md:py-[14px] rounded-[50px] text-[12px] md:text-[14px] font-semibold mb-[12px]">
             <FaChalkboardTeacher /> <span>Personalized Tutoring</span>
           </div>
           <H2 className="text-[32px] md:text-[42px] text-text-dark leading-[1.2] md:leading-[1.15] font-bold mb-[12px]">
             Personalized Tutoring Sessions
           </H2>
-          <p className="text-[16px] md:text-[20px] leading-[1.6] md:leading-[1.9] text-[#444] mb-[20px] md:mb-[25px]">
+          <p className="text-[16px] md:text-[18px] leading-[1.6] md:leading-[1.8] text-[#444] mb-[20px] md:mb-[25px]">
             Our Personalized Tutoring Sessions are designed to help students
             strengthen concepts, improve problem-solving skills, and gain
             confidence in Olympiad examinations. Every session is tailored
             according to the student's learning pace and academic goals.
           </p>
-          <p className="text-[16px] md:text-[20px] leading-[1.6] md:leading-[1.9] text-[#444] mb-[20px] md:mb-[25px]">
+          <p className="text-[16px] md:text-[18px] leading-[1.6] md:leading-[1.8] text-[#444] mb-[20px] md:mb-[25px]">
             Students receive one-on-one guidance, topic-wise practice,
             doubt-solving support, and expert mentoring to achieve their
             highest potential in Mathematics, Science, English, and

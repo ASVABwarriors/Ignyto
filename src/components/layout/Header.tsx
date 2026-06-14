@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { FaHome, FaInfoCircle, FaSun, FaEnvelope } from "react-icons/fa";
+import { FaHome, FaInfoCircle, FaSun, FaEnvelope, FaChalkboardTeacher } from "react-icons/fa";
 
 export default function Header() {
   const pathname = usePathname();
@@ -39,6 +39,13 @@ export default function Header() {
             <Link href="/#summer-camps" className="flex flex-col md:flex-row items-center justify-center gap-1 text-[#333] text-[11px] md:text-[17px] font-semibold py-[6px] md:py-[10px] px-[5px] md:px-[14px] rounded-[10px] transition-all duration-300 w-full md:w-auto hover:bg-primary-light hover:text-primary">
               <FaSun className="text-[22px] md:hidden mb-[2px]" />
               <span className="text-center">Summer Camps</span>
+            </Link>
+          </li>
+          <li className="flex-1 md:flex-none flex justify-center">
+            <Link href="/#tutoring" className="flex flex-col md:flex-row items-center justify-center gap-1 text-[#333] text-[11px] md:text-[17px] font-semibold py-[6px] md:py-[10px] px-[5px] md:px-[14px] rounded-[10px] transition-all duration-300 w-full md:w-auto hover:bg-primary-light hover:text-primary">
+              <FaChalkboardTeacher className="text-[22px] md:hidden mb-[2px]" />
+              <span className="text-center hidden md:inline">Personalized Tutoring</span>
+              <span className="text-center md:hidden">Tutoring</span>
             </Link>
           </li>
           <li className="flex-1 md:flex-none flex justify-center">

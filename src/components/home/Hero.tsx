@@ -40,16 +40,16 @@ export default function Hero({ courses = [] }: { courses?: { id: string, title: 
   };
 
   return (
-    <section className="relative w-[95%] max-w-[1300px] mx-auto my-[10px] mb-[30px] flex flex-col lg:flex-row gap-6">
+    <section className="relative w-[95%] max-w-[1800px] mx-auto my-[10px] mb-[30px] flex flex-col lg:flex-row gap-6 lg:gap-10 justify-between items-center">
       {/* Left side: Slider */}
-      <div className="relative w-full lg:w-2/3 xl:w-3/4 max-h-[400px] lg:max-h-[500px] aspect-[16/7] lg:aspect-auto overflow-hidden rounded-[40px] md:rounded-[50px] shadow-[0_5px_20px_rgba(0,0,0,0.15)] flex-shrink-0 bg-white">
+      <div className="relative w-full lg:flex-1 aspect-video lg:aspect-[1900/965] overflow-hidden rounded-[40px] md:rounded-[50px] shadow-[0_5px_20px_rgba(0,0,0,0.15)] bg-white">
         <div className="w-full h-full relative">
            {slides.map((src, index) => (
             <img
               key={index}
               src={src}
               alt={`Banner ${index + 1}`}
-              className={`absolute w-full h-full object-cover lg:object-contain transition-opacity duration-800 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              className={`absolute w-full h-full object-cover transition-opacity duration-800 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
             />
           ))}
         </div>
@@ -70,17 +70,17 @@ export default function Hero({ courses = [] }: { courses?: { id: string, title: 
       </div>
 
       {/* Right side: Inquiry Form */}
-      <div id="inquiry" className="w-full lg:w-5/12 xl:w-1/3 flex flex-col pt-8 lg:pt-0 z-10 relative">
+      <div id="inquiry" className="w-full lg:w-[400px] xl:w-[450px] shrink-0 flex flex-col pt-8 lg:pt-0 z-10 relative">
         
         <div className="flex justify-center px-4 md:px-8 translate-y-4 z-0 relative">
-          <div className="bg-primary rounded-t-[30px] py-[18px] shadow-[-2px_-4px_10px_rgba(0,0,0,0.1)] font-bold text-white text-center text-[15px] w-[75%] md:w-[65%] uppercase tracking-wide">
+          <div className="bg-primary rounded-t-[30px] py-[15px] md:py-[18px] shadow-[-2px_-4px_10px_rgba(0,0,0,0.1)] font-bold text-white text-center text-[14px] md:text-[15px] w-[75%] md:w-[65%] uppercase tracking-wide">
             Free Trial
           </div>
         </div>
 
         {/* Form Container */}
-        <div className="bg-white rounded-[30px] shadow-[0_10px_40px_rgba(0,0,0,0.15)] p-6 md:p-8 flex flex-col justify-center z-10 relative">
-          <div className="text-center mb-6">
+        <div className="bg-white rounded-[30px] shadow-[0_10px_40px_rgba(0,0,0,0.15)] p-5 md:p-6 lg:p-8 flex flex-col justify-center z-10 relative">
+          <div className="text-center mb-5 md:mb-6">
             <h3 className="text-lg md:text-xl font-bold text-primary-dark tracking-wide uppercase" suppressHydrationWarning>
               Reserve your seat <span className="text-secondary">for free demo</span>
             </h3>
@@ -96,9 +96,9 @@ export default function Hero({ courses = [] }: { courses?: { id: string, title: 
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Your Name<span className="text-red-500">*</span></label>
+                  <label className="block text-[13px] font-semibold text-gray-700 mb-1">Your Name<span className="text-red-500">*</span></label>
                   <input 
                     type="text" 
                     required 
@@ -109,7 +109,7 @@ export default function Hero({ courses = [] }: { courses?: { id: string, title: 
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Phone Number<span className="text-red-500">*</span></label>
+                  <label className="block text-[13px] font-semibold text-gray-700 mb-1">Phone Number<span className="text-red-500">*</span></label>
                   <div className="flex">
                     <span className="inline-flex items-center px-3 rounded-l-xl border border-r-0 border-gray-200 bg-gray-50 text-gray-500 sm:text-sm">
                       +1
@@ -120,15 +120,15 @@ export default function Hero({ courses = [] }: { courses?: { id: string, title: 
                       placeholder="Mobile" 
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      className="flex-1 w-full px-4 py-2.5 rounded-r-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm text-gray-800 placeholder-gray-400"
+                      className="flex-1 w-full px-4 py-2.5 rounded-r-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm text-gray-800 placeholder-gray-400 min-w-0"
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Select Grade<span className="text-red-500">*</span></label>
+                  <label className="block text-[13px] font-semibold text-gray-700 mb-1">Select Grade<span className="text-red-500">*</span></label>
                   <select 
                     required 
                     value={formData.grade}
@@ -143,7 +143,7 @@ export default function Hero({ courses = [] }: { courses?: { id: string, title: 
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Interested Course</label>
+                  <label className="block text-[13px] font-semibold text-gray-700 mb-1">Interested Course</label>
                   <select 
                     value={formData.courseId}
                     onChange={(e) => setFormData({...formData, courseId: e.target.value})}
@@ -157,9 +157,9 @@ export default function Hero({ courses = [] }: { courses?: { id: string, title: 
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">City</label>
+                  <label className="block text-[13px] font-semibold text-gray-700 mb-1">City</label>
                   <input 
                     type="text" 
                     placeholder="e.g. New York" 
