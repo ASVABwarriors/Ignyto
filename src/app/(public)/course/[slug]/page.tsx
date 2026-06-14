@@ -1,10 +1,45 @@
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
 import { H1, H2 } from "@/components/ui/Heading";
 import Link from "next/link";
 import { formatCourseDate } from "@/lib/formatTime";
 import { FaCalendarAlt, FaRegClock, FaMoneyBillWave, FaBullseye, FaUsers, FaArrowLeft, FaFilePdf } from "react-icons/fa";
 import RegisterClient from "@/app/(public)/courses/register/RegisterClient";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const course = await prisma.course.findUnique({
+    where: { slug }
+  });
+
+  if (!course) {
+    return {
+      title: "Course Not Found",
+    };
+  }
+
+  // Extract a plain text snippet from description if possible, or use a default
+  const plainTextDesc = course.description ? course.description.replace(/<[^>]+>/g, '').slice(0, 160) + '...' : `Enroll in ${course.title} at Ignyto Tutoring.`;
+
+  return {
+    title: course.title,
+    description: plainTextDesc,
+    keywords: [course.category, course.title, "Ignyto Tutoring", "Summer Camp", "Course", course.classMode],
+    openGraph: {
+      title: course.title,
+      description: plainTextDesc,
+      images: course.thumbnailUrl ? [{ url: course.thumbnailUrl }] : [],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: course.title,
+      description: plainTextDesc,
+      images: course.thumbnailUrl ? [course.thumbnailUrl] : [],
+    }
+  };
+}
 
 export default async function CourseDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

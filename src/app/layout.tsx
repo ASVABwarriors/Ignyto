@@ -9,8 +9,26 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Ignyto Tutoring",
-  description: "Ignyto Tutoring to inspire students with innovative challenges.",
+  title: {
+    template: "%s | Ignyto Tutoring",
+    default: "Ignyto Tutoring - Premier Academic & Summer Camps",
+  },
+  description: "Join Ignyto Tutoring to inspire students with innovative challenges, online academic programs, and expert-led summer camps in Math, Coding, and logic.",
+  keywords: ["tutoring", "summer camps", "math camps", "coding camps", "online tutoring", "academic competitions", "STEM learning", "Ignyto"],
+  authors: [{ name: "Ignyto Tutoring" }],
+  creator: "Ignyto Tutoring",
+  openGraph: {
+    title: "Ignyto Tutoring - Premier Academic & Summer Camps",
+    description: "Join Ignyto Tutoring to inspire students with innovative challenges, online academic programs, and expert-led summer camps.",
+    url: "https://ignyto.com",
+    siteName: "Ignyto Tutoring",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ignyto Tutoring - Premier Academic & Summer Camps",
+    description: "Join Ignyto Tutoring to inspire students with innovative challenges, online academic programs, and expert-led summer camps.",
+  },
   icons: {
     icon: [
       { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
