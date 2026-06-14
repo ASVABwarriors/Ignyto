@@ -203,7 +203,7 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
                     <option value="">No Preference</option>
                     {trialSlots.map(dateObj => (
                       <option key={dateObj.id} value={dateObj.dateStr}>
-                        {new Date(dateObj.dateStr + 'T00:00:00').toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' })}
+                        {new Date(dateObj.dateStr + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
                       </option>
                     ))}
                   </select>
