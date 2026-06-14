@@ -16,7 +16,7 @@ export default function Header() {
             <span className="text-white font-bold text-xl md:text-2xl tracking-wide">Ignyto Tutoring</span>
           </Link>
         </div>
-        <Link href="/#inquiry" className="bg-secondary text-black py-[10px] px-[30px] rounded-[30px] font-bold no-underline hidden md:block">
+        <Link href="/courses" className="bg-secondary text-black py-[10px] px-[30px] rounded-[30px] font-bold no-underline hidden md:block">
           Register Now
         </Link>
       </div>
