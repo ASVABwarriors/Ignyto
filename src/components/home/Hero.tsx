@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { submitInquiry } from "@/app/actions/inquiry";
 
-export default function Hero({ courses = [] }: { courses?: { id: string, title: string }[] }) {
+export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id: string, title: string }[], trialSlots?: any[] }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   
   // 🌟 EASY IMAGE SWAP 🌟
@@ -16,7 +16,7 @@ export default function Hero({ courses = [] }: { courses?: { id: string, title: 
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "", grade: "", courseId: "", city: "", state: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "", grade: "", courseId: "", city: "", state: "", trialDate: "", trialTime: "" });
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -32,7 +32,7 @@ export default function Hero({ courses = [] }: { courses?: { id: string, title: 
     setIsSubmitting(false);
       if (res.success) {
         setSubmitted(true);
-        setFormData({ name: "", email: "", phone: "", message: "", grade: "", courseId: "", city: "", state: "" });
+        setFormData({ name: "", email: "", phone: "", message: "", grade: "", courseId: "", city: "", state: "", trialDate: "", trialTime: "" });
         setTimeout(() => setSubmitted(false), 3000);
       } else {
       alert("Something went wrong. Please try again later.");
@@ -157,6 +157,18 @@ export default function Hero({ courses = [] }: { courses?: { id: string, title: 
                 </div>
               </div>
 
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Email Address<span className="text-red-500">*</span></label>
+                <input 
+                  type="email" 
+                  required 
+                  placeholder="e.g. email@example.com" 
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  className="w-full px-3 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400"
+                />
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-semibold text-gray-700 mb-1">City</label>
@@ -180,16 +192,36 @@ export default function Hero({ courses = [] }: { courses?: { id: string, title: 
                 </div>
               </div>
 
-              <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Email Address<span className="text-red-500">*</span></label>
-                <input 
-                  type="email" 
-                  required 
-                  placeholder="e.g. email@example.com" 
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full px-3 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">Select Date</label>
+                  <select 
+                    value={formData.trialDate}
+                    onChange={(e) => setFormData({...formData, trialDate: e.target.value, trialTime: ""})}
+                    className="w-full px-3 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 bg-white"
+                  >
+                    <option value="">No Preference</option>
+                    {trialSlots.map(dateObj => (
+                      <option key={dateObj.id} value={dateObj.dateStr}>
+                        {new Date(dateObj.dateStr + 'T00:00:00').toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' })}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-1">Select Time</label>
+                  <select 
+                    value={formData.trialTime}
+                    onChange={(e) => setFormData({...formData, trialTime: e.target.value})}
+                    disabled={!formData.trialDate}
+                    className="w-full px-3 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 bg-white disabled:bg-gray-50 disabled:text-gray-400 disabled:cursor-not-allowed"
+                  >
+                    <option value="">No Preference</option>
+                    {formData.trialDate && trialSlots.find(d => d.dateStr === formData.trialDate)?.timeSlots.map((slot: any) => (
+                      <option key={slot.id} value={slot.timeStr}>{slot.timeStr}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               <div>

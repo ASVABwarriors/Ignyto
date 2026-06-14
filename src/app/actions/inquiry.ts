@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 
-export async function submitInquiry(data: { name: string; email: string; phone: string; message: string; grade?: string; courseId?: string; city?: string; state?: string }) {
+export async function submitInquiry(data: { name: string; email: string; phone: string; message: string; grade?: string; courseId?: string; city?: string; state?: string; trialDate?: string; trialTime?: string }) {
   try {
     const inquiry = await prisma.inquiry.create({
       data: {
@@ -14,6 +14,8 @@ export async function submitInquiry(data: { name: string; email: string; phone: 
         courseId: data.courseId || null,
         city: data.city || null,
         state: data.state || null,
+        trialDate: data.trialDate || null,
+        trialTime: data.trialTime || null,
       },
     });
     return { success: true, inquiry };

@@ -52,6 +52,12 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           >
             Inquiries
           </Link>
+          <Link 
+            href="/admin/dashboard/trial-slots" 
+            className="block px-4 py-3 rounded-xl text-sm font-semibold text-gray-700 hover:bg-primary-light hover:text-primary transition-colors"
+          >
+            Trial Slots
+          </Link>
           {session.role === "SUPERADMIN" && (
             <Link 
               href="/admin/dashboard/admins" 

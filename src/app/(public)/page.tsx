@@ -9,9 +9,17 @@ export default async function Home() {
     orderBy: { createdAt: "desc" },
   });
 
+  const trialSlots = await prisma.freeTrialDate.findMany({
+    include: { timeSlots: true },
+    orderBy: { dateStr: "asc" },
+  });
+
   return (
     <>
-      <Hero courses={courses.map(c => ({ id: c.id, title: c.title }))} />
+      <Hero 
+        courses={courses.map(c => ({ id: c.id, title: c.title }))} 
+        trialSlots={trialSlots}
+      />
       <About />
       <SummerCamps courses={courses} />
       <Tutoring />
