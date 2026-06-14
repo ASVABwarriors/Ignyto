@@ -7,9 +7,12 @@ type ExtendedCourse = Course & { dates?: CourseDate[] };
 
 export default function CourseCard({ course }: { course: ExtendedCourse }) {
   return (
-    <Link href={`/course/${course.slug}`} className="block h-full group min-w-[280px] sm:min-w-[320px] max-w-[450px] mx-auto lg:max-w-none lg:min-w-0 lg:w-full snap-center shrink-0">
+    <div className="block h-full group min-w-[280px] sm:min-w-[320px] max-w-[450px] mx-auto lg:max-w-none lg:min-w-0 lg:w-full snap-center shrink-0">
       <div className="bg-white rounded-[25px] overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.05)] border border-gray-100 transition-all duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.1)] hover:-translate-y-2 h-full flex flex-col relative">
         
+        {/* Absolute Overlay Link */}
+        <Link href={`/course/${course.slug}`} className="absolute inset-0 z-10" aria-label={`View details for ${course.title}`} />
+
         {/* Image Container */}
         <div className="relative overflow-hidden w-full aspect-video bg-gray-100 shrink-0">
           {course.thumbnailUrl ? (
@@ -43,19 +46,19 @@ export default function CourseCard({ course }: { course: ExtendedCourse }) {
             target="_blank"
             download
             rel="noreferrer"
-            className="flex items-center gap-2 no-underline text-primary mb-[12px] font-semibold transition-colors hover:text-primary-dark text-[14px] md:text-[16px]"
+            className="relative z-20 flex items-center gap-2 no-underline text-primary mb-[12px] font-semibold transition-colors hover:text-primary-dark text-[14px] md:text-[16px]"
           >
             <FaFilePdf /> Download Syllabus
           </a>
         )}
-        <Link href={`/course/${course.slug}`} className="block no-underline text-primary mb-[15px] font-bold text-[14px] md:text-[16px]">
+        <Link href={`/course/${course.slug}`} className="relative z-20 block no-underline text-primary mb-[15px] font-bold text-[14px] md:text-[16px]">
           View Details
         </Link>
-        <Link href={`/course/${course.slug}`} className="block text-center bg-primary text-white p-[10px] md:p-[12px] rounded-[10px] no-underline font-bold transition-opacity hover:opacity-90 text-[14px] md:text-[16px]">
+        <Link href={`/course/${course.slug}`} className="relative z-20 block text-center bg-primary text-white p-[10px] md:p-[12px] rounded-[10px] no-underline font-bold transition-opacity hover:opacity-90 text-[14px] md:text-[16px]">
           Enroll Now
         </Link>
       </div>
       </div>
-    </Link>
+    </div>
   );
 }
