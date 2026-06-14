@@ -7,7 +7,7 @@ export default function About() {
         {/* Left side: Text Content */}
         <div>
           <div className="mb-[20px] md:mb-[30px]">
-            <H2 className="text-[32px] md:text-[42px] text-primary mt-[10px] mb-[10px] font-bold">
+            <H2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] text-primary mt-[10px] mb-[10px] font-bold">
               About Us
             </H2>
           </div>

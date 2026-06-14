@@ -16,7 +16,7 @@ export default function SummerCamps({ courses }: { courses: ExtendedCourse[] }) 
         <span className="text-[12px] md:text-[14px] font-bold tracking-[2px] text-primary relative after:content-[''] after:w-[40px] md:after:w-[60px] after:h-[2px] after:bg-primary after:absolute after:top-1/2 after:ml-[12px]">
           THE FUTURE OF LEARNING
         </span>
-        <H2 className="text-[32px] md:text-[42px] text-primary mt-[10px] mb-[10px] font-bold">
+        <H2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] text-primary mt-[10px] mb-[10px] font-bold">
           Summer Camps
         </H2>
         <p className="text-[16px] md:text-[18px] text-[#555]">

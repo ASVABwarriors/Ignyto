@@ -12,7 +12,7 @@ export default function Tutoring() {
           <div className="inline-flex items-center gap-[6px] md:gap-[10px] bg-primary-light text-primary px-[18px] md:px-[24px] py-[10px] md:py-[14px] rounded-[50px] text-[12px] md:text-[14px] font-semibold mb-[12px]">
             <FaChalkboardTeacher /> <span>Personalized Tutoring</span>
           </div>
-          <H2 className="text-[32px] md:text-[42px] text-text-dark leading-[1.2] md:leading-[1.15] font-bold mb-[12px]">
+          <H2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] text-text-dark leading-[1.2] md:leading-[1.15] font-bold mb-[12px]">
             Personalized Tutoring Sessions
           </H2>
           <p className="text-[16px] md:text-[18px] leading-[1.6] md:leading-[1.8] text-[#444] mb-[20px] md:mb-[25px]">

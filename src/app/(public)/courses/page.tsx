@@ -21,7 +21,7 @@ export default async function CoursesPage() {
           <span className="text-[12px] md:text-[14px] font-bold tracking-[2px] text-primary relative after:content-[''] after:w-[40px] md:after:w-[60px] after:h-[2px] after:bg-primary after:absolute after:top-1/2 after:ml-[12px] before:content-[''] before:w-[40px] md:before:w-[60px] before:h-[2px] before:bg-primary before:absolute before:top-1/2 before:-translate-x-full before:-ml-[12px]">
             ALL PROGRAMS
           </span>
-          <H2 className="text-[36px] md:text-[48px] text-primary-dark mt-[15px] mb-[15px] font-bold">
+          <H2 className="text-[clamp(1.75rem,4vw,2.75rem)] text-primary-dark mt-[15px] mb-[15px] font-bold">
             Explore All Summer Camps
           </H2>
           <p className="text-[16px] md:text-[20px] text-[#555] max-w-[700px] mx-auto">

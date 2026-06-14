@@ -78,7 +78,7 @@ export default async function CourseDetailsPage({ params }: { params: Promise<{ 
 
         {/* Content */}
         <div className="p-[30px] md:p-[50px]">
-          <H1 className="text-[40px] md:text-[50px] font-bold text-primary-dark mb-[20px] leading-tight">{course.title}</H1>
+          <H1 className="text-[clamp(1.85rem,4.5vw,2.75rem)] font-bold text-primary-dark mb-[20px] leading-tight">{course.title}</H1>
           
           {/* Metadata Top Row */}
           <div className="flex flex-wrap items-center gap-6 mb-[30px] border-b border-gray-100 pb-6">

@@ -22,7 +22,7 @@ export default function CourseCard({ course }: { course: ExtendedCourse }) {
         </div>
       
       <div className="p-[15px] md:p-[18px]">
-        <H3 className="text-primary-dark text-[24px] md:text-[30px] font-bold mb-2">{course.title}</H3>
+        <H3 className="text-primary-dark text-[clamp(1.35rem,2.5vw,1.75rem)] font-bold mb-2">{course.title}</H3>
         
         <div className="mb-[15px] space-y-1 md:space-y-2 text-[#555] text-[14px] md:text-[16px]">
           <p className="flex items-center gap-2"><FaCalendarAlt className="text-primary shrink-0" /> {course.duration}</p>
