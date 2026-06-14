@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { H4 } from "@/components/ui/Heading";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaDownload } from "react-icons/fa";
 
-type PaymentWithRelations = any; // We'll use any to avoid importing complex Prisma types for now, or we can inline the shape.
+type PaymentWithRelations = any;
 
 export default function PaymentsTableClient({ initialPayments }: { initialPayments: PaymentWithRelations[] }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -34,11 +34,63 @@ export default function PaymentsTableClient({ initialPayments }: { initialPaymen
     );
   });
 
+  const downloadCSV = () => {
+    const headers = [
+      "Sr No", "Student Name", "Student Email", "Student Phone", "Grade", 
+      "Course Title", "Selected Week", "Selected Time", "Parent Name", 
+      "Parent Email", "Parent Phone", "Address", "Amount", "PayPal Order ID", 
+      "Status", "Date"
+    ];
+    
+    const escapeCSV = (str: string | null | undefined) => {
+      if (str === null || str === undefined) return '""';
+      const cleanStr = String(str).replace(/"/g, '""');
+      return `"${cleanStr}"`;
+    };
+
+    const rows = filteredPayments.map((p, index) => [
+      index + 1,
+      escapeCSV(p.enrollment?.studentName || p.user?.name || "Guest"),
+      escapeCSV(p.enrollment?.studentEmail || p.user?.email || ""),
+      escapeCSV(p.enrollment?.studentPhone || ""),
+      escapeCSV(p.enrollment?.grade || ""),
+      escapeCSV(p.course?.title || ""),
+      escapeCSV(p.enrollment?.selectedDate || ""),
+      escapeCSV(p.enrollment?.selectedTime || ""),
+      escapeCSV(p.enrollment?.parentName || ""),
+      escapeCSV(p.enrollment?.parentEmail || ""),
+      escapeCSV(p.enrollment?.parentPhone || ""),
+      escapeCSV(p.enrollment?.address || ""),
+      escapeCSV(`$${p.amount}`),
+      escapeCSV(p.paypalOrderId),
+      escapeCSV(p.status),
+      escapeCSV(new Date(p.createdAt).toLocaleString())
+    ]);
+
+    const csvContent = [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `payments_${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = "hidden";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="bg-white rounded-2xl shadow-[0_5px_20px_rgba(0,0,0,0.08)] border border-gray-100 overflow-hidden">
       
-      {/* Search Bar */}
-      <div className="p-4 border-b border-gray-100 bg-gray-50/50 flex justify-end">
+      {/* Search Bar & Download Button */}
+      <div className="p-4 border-b border-gray-100 bg-gray-50/50 flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3">
+        <button
+          onClick={downloadCSV}
+          className="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-2 px-4 rounded-xl text-sm transition-all shadow-[0_4px_12px_rgba(0,79,159,0.15)] hover:-translate-y-0.5 cursor-pointer"
+        >
+          <FaDownload size={14} />
+          Download CSV
+        </button>
         <div className="relative w-full max-w-sm">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <FaSearch className="text-gray-400" />
