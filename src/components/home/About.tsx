@@ -35,9 +35,8 @@ export default function About() {
           </div>
         </div>
 
-        {/* Right side: Square Image */}
         <div className="mt-[30px] lg:mt-0 flex justify-center lg:justify-end w-full">
-          <div className="relative w-full max-w-[380px] aspect-square rounded-[30px] overflow-hidden group">
+          <div className="relative w-full max-w-[300px] md:max-w-[320px] aspect-square rounded-[30px] overflow-hidden group">
             <div className="absolute inset-0 border-[6px] border-transparent group-hover:border-primary rounded-[30px] z-10 transition-colors duration-300 pointer-events-none"></div>
             <img 
               src="/images/math.jpg" 
