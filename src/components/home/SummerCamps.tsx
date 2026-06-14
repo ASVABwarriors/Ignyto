@@ -30,13 +30,11 @@ export default function SummerCamps({ courses }: { courses: ExtendedCourse[] }) 
         ))}
       </div>
 
-      {hasMore && (
-        <div className="mt-[30px] text-center">
-          <Link href="/courses" className="inline-block bg-white text-primary border-2 border-primary py-[12px] px-[40px] rounded-[30px] font-bold no-underline transition-all hover:bg-primary hover:text-white">
-            View All Camps
-          </Link>
-        </div>
-      )}
+      <div className="mt-[40px] text-center">
+        <Link href="/courses" className="inline-block bg-white text-primary border-2 border-primary py-[12px] px-[40px] rounded-[30px] font-bold no-underline transition-all hover:bg-primary hover:text-white">
+          View All Camps
+        </Link>
+      </div>
     </section>
   );
 }
