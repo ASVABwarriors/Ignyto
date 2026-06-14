@@ -1,0 +1,38 @@
+{
+  "users": [
+    {
+      "id": "cmqb7c8f6000029s0v4slb2ji",
+      "email": "rohit@nirmeva.com",
+      "name": "Rohit Bansode",
+      "phone": "9373380280",
+      "password": "$2b$10$kwq6wGVopnBaF82hu9NCg.l4MX0Z16lvkA97AY/DEEuNwC1NDz09i",
+      "twoFactorSecret": "NTINBYPHR6H25JWV5LZOY3GBNVFEJBMC",
+      "isTwoFactorEnabled": true,
+      "role": "SUPERADMIN",
+      "createdAt": "2026-06-12T17:30:06.882Z",
+      "updatedAt": "2026-06-12T17:30:48.554Z"
+    }
+  ],
+  "courses": [
+    {
+      "id": "cmqb7ukvn000129s0tgm9gv2t",
+      "slug": "demo",
+      "title": "demo",
+      "description": "<p>some&nbsp;demo&nbsp;content</p><p></p><p><strong>some&nbsp;demo&nbsp;content</strong></p><p></p><p><u>some&nbsp;demo&nbsp;content</u></p><p></p><p><em>some&nbsp;demo&nbsp;content</em></p><p></p><p><span class=\"ql-size-large\">some&nbsp;demo&nbsp;content</span></p><p></p><p><span class=\"ql-size-huge\">some&nbsp;demo&nbsp;content</span></p><p></p><p><span class=\"ql-font-serif\">some&nbsp;demo&nbsp;content</span></p><p></p><h1>some&nbsp;demo&nbsp;content</h1><p></p><p><span style=\"color: rgb(230, 0, 0);\">some&nbsp;demo&nbsp;content</span></p><p></p><p>some&nbsp;demo&nbsp;points:&nbsp;</p><ul><li>point&nbsp;1</li><li>point&nbsp;2</li></ul><ol><li>point&nbsp;3</li><li>point&nbsp;4</li></ol><p></p><p>hello.comigjrwo</p><p></p><p><s>some&nbsp;demo&nbsp;content</s></p>",
+      "fee": 149,
+      "duration": "3 weeks",
+      "dailyHours": "1.5 hrs/day",
+      "category": "Coding",
+      "classMode": "Online",
+      "imageName": null,
+      "thumbnailUrl": "https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781287125/courses/thumbnails/wylfqmnbbrwn7gj1q7gf.png",
+      "pdfUrl": "https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781287261/courses/syllabus/z8xujasrcos1w9818dc7.pdf",
+      "syllabus": null,
+      "startDate": "2026-12-31T10:00:00.000Z",
+      "timezone": "America/Los_Angeles",
+      "createdAt": "2026-06-12T17:44:22.835Z",
+      "updatedAt": "2026-06-12T18:19:31.916Z"
+    }
+  ],
+  "payments": []
+}

@@ -1,0 +1,62 @@
+import { H2 } from "@/components/ui/Heading";
+import Link from "next/link";
+import { FaChalkboardTeacher, FaGraduationCap, FaBook, FaChartLine, FaMedal } from "react-icons/fa";
+
+export default function Tutoring() {
+  return (
+    <section id="tutoring" className="py-[40px] md:py-[60px] pb-[50px] md:pb-[70px] bg-bg-light">
+      <div className="w-[90%] max-w-[1300px] mx-auto lg:grid lg:grid-cols-[1.1fr_1fr] gap-[40px] md:gap-[70px] items-center">
+        
+        {/* LEFT CONTENT */}
+        <div className="mb-[30px] md:mb-0 lg:mb-0">
+          <div className="inline-flex items-center gap-[6px] md:gap-[10px] bg-primary-light text-primary px-[18px] md:px-[24px] py-[10px] md:py-[14px] rounded-[50px] text-[14px] md:text-[20px] font-semibold mb-[12px]">
+            <FaChalkboardTeacher /> <span>Personalized Tutoring</span>
+          </div>
+          <H2 className="text-[32px] md:text-[42px] text-text-dark leading-[1.2] md:leading-[1.15] font-bold mb-[12px]">
+            Personalized Tutoring Sessions
+          </H2>
+          <p className="text-[16px] md:text-[20px] leading-[1.6] md:leading-[1.9] text-[#444] mb-[20px] md:mb-[25px]">
+            Our Personalized Tutoring Sessions are designed to help students
+            strengthen concepts, improve problem-solving skills, and gain
+            confidence in Olympiad examinations. Every session is tailored
+            according to the student's learning pace and academic goals.
+          </p>
+          <p className="text-[16px] md:text-[20px] leading-[1.6] md:leading-[1.9] text-[#444] mb-[20px] md:mb-[25px]">
+            Students receive one-on-one guidance, topic-wise practice,
+            doubt-solving support, and expert mentoring to achieve their
+            highest potential in Mathematics, Science, English, and
+            various Olympiad competitions.
+          </p>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-[12px] md:gap-[18px] mt-[25px] md:mt-[35px]">
+            {[
+              { icon: <FaGraduationCap />, text: "Expert Mentors" },
+              { icon: <FaBook />, text: "Concept Clarity" },
+              { icon: <FaChartLine />, text: "Performance Tracking" },
+              { icon: <FaMedal />, text: "Olympiad Excellence" }
+            ].map((feature, i) => (
+              <div key={i} className="bg-white px-[16px] py-[12px] md:px-[22px] md:py-[18px] rounded-[12px] md:rounded-[15px] font-semibold flex items-center gap-[10px] md:gap-[12px] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-[5px] hover:bg-primary hover:text-white group text-[14px] md:text-[16px]">
+                <span className="text-primary group-hover:text-white text-[18px] md:text-[22px]">{feature.icon}</span>
+                <span>{feature.text}</span>
+              </div>
+            ))}
+          </div>
+
+          <Link href="#" className="inline-block mt-[30px] md:mt-[40px] bg-primary text-white px-[30px] md:px-[38px] py-[14px] md:py-[16px] rounded-[50px] text-[16px] md:text-[18px] font-semibold transition-all duration-300 hover:bg-primary-dark hover:-translate-y-[4px]">
+            Book A Free Demo
+          </Link>
+        </div>
+
+        {/* RIGHT IMAGES */}
+        <div className="grid grid-cols-2 gap-[15px] md:gap-[40px]">
+          {[1, 2, 3, 4].map((num, i) => (
+            <div key={i} className={`overflow-hidden rounded-[15px] md:rounded-[25px] shadow-[0_8px_20px_rgba(0,0,0,0.15)] md:shadow-[0_12px_25px_rgba(0,0,0,0.15)] relative ${num === 1 ? 'lg:translate-y-[30px]' : num === 4 ? 'lg:-translate-y-[30px]' : ''}`}>
+              <img src={`/images/tutor${num}.jpg`} alt={`Tutor ${num}`} className="w-full h-[140px] sm:h-[180px] md:h-[260px] object-cover transition-transform duration-500 ease-in-out hover:scale-[1.08]" />
+            </div>
+          ))}
+        </div>
+        
+      </div>
+    </section>
+  );
+}

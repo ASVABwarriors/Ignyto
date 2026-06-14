@@ -1,0 +1,130 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id              String    @id @default(cuid())
+  email           String    @unique
+  name            String?
+  phone           String?
+  password        String?
+  twoFactorSecret String?
+  isTwoFactorEnabled Boolean @default(false)
+  role            Role      @default(USER)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  payments        Payment[]
+}
+
+enum Role {
+  USER
+  ADMIN
+  SUPERADMIN
+}
+
+model Course {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       String
+  description String?
+  fee         Float
+  duration    String
+  dailyHours  String
+  category    String
+  classMode   String
+  imageName   String?
+  thumbnailUrl String?
+  pdfUrl      String?
+  syllabus    String?
+  startDate   DateTime?
+  timezone    String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  payments    Payment[]
+  dates       CourseDate[]
+  enrollments Enrollment[]
+  inquiries   Inquiry[]
+}
+
+model Payment {
+  id              String   @id @default(cuid())
+  userId          String?
+  courseId        String
+  paypalOrderId   String   @unique
+  amount          Float
+  status          String   // e.g., "COMPLETED", "PENDING"
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user            User?    @relation(fields: [userId], references: [id])
+  course          Course   @relation(fields: [courseId], references: [id])
+  enrollment      Enrollment?
+}
+
+model CourseDate {
+  id        String   @id @default(cuid())
+  courseId  String
+  dateStr   String
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  timeSlots CourseTimeSlot[]
+}
+
+model CourseTimeSlot {
+  id        String     @id @default(cuid())
+  dateId    String
+  timeStr   String
+  date      CourseDate @relation(fields: [dateId], references: [id], onDelete: Cascade)
+}
+
+model Enrollment {
+  id              String   @id @default(cuid())
+  courseId        String
+  paymentId       String?  @unique
+  
+  studentName     String
+  grade           String
+  studentEmail    String
+  studentPhone    String
+
+  parentName      String?
+  parentEmail     String
+  parentPhone     String
+  
+  referredBy      String?
+  address         String?
+  
+  selectedDate    String
+  selectedTime    String
+
+  status          String   @default("PENDING") // PENDING, CONFIRMED
+  
+  course          Course   @relation(fields: [courseId], references: [id])
+  payment         Payment? @relation(fields: [paymentId], references: [id])
+  createdAt       DateTime @default(now())
+}
+
+model Inquiry {
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  phone       String
+  message     String
+  grade       String?
+  courseId    String?
+  city        String?
+  state       String?
+  status      String   @default("PENDING") // PENDING, RESOLVED
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  course      Course?  @relation(fields: [courseId], references: [id])
+}
