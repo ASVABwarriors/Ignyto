@@ -7,16 +7,19 @@ type ExtendedCourse = Course & { dates?: CourseDate[] };
 
 export default function CourseCard({ course }: { course: ExtendedCourse }) {
   return (
-    <div className="bg-white rounded-[20px] overflow-hidden shadow-[0_5px_20px_rgba(0,0,0,0.08)] border border-gray-200 transition-all duration-300 hover:-translate-y-2 hover:border-primary min-w-[85vw] sm:min-w-[320px] lg:min-w-0 lg:w-full snap-center shrink-0">
-      <div className="card-image">
-        {course.thumbnailUrl ? (
-          <img src={course.thumbnailUrl} alt={course.title} className="w-full h-[180px] md:h-[200px] object-cover block" />
-        ) : course.imageName ? (
-          <img src={`/images/${course.imageName}`} alt={course.title} className="w-full h-[180px] md:h-[200px] object-cover block" />
-        ) : (
-          <div className="w-full h-[180px] md:h-[200px] bg-gray-200 flex items-center justify-center text-gray-400">No Image</div>
-        )}
-      </div>
+    <Link href={`/course/${course.slug}`} className="block h-full group">
+      <div className="bg-white rounded-[25px] overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.05)] border border-gray-100 transition-all duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.1)] hover:-translate-y-2 h-full flex flex-col relative">
+        
+        {/* Image Container */}
+        <div className="relative overflow-hidden w-full aspect-video bg-gray-100 shrink-0">
+          {course.thumbnailUrl ? (
+            <img src={course.thumbnailUrl} alt={course.title} className="w-full h-full object-cover block transition-transform duration-500 group-hover:scale-105" />
+          ) : course.imageName ? (
+            <img src={`/images/${course.imageName}`} alt={course.title} className="w-full h-full object-cover block transition-transform duration-500 group-hover:scale-105" />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-gray-400 font-bold bg-gray-200">No Image</div>
+          )}
+        </div>
       
       <div className="p-[15px] md:p-[18px]">
         <H3 className="text-primary-dark text-[24px] md:text-[30px] font-bold mb-2">{course.title}</H3>

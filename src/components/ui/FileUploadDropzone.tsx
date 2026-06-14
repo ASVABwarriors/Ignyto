@@ -10,9 +10,10 @@ interface FileUploadDropzoneProps {
   defaultUrl?: string;
   isPdf?: boolean;
   folder?: string;
+  showImagePreviews?: boolean;
 }
 
-export default function FileUploadDropzone({ label, accept, onUploadSuccess, defaultUrl, isPdf, folder }: FileUploadDropzoneProps) {
+export default function FileUploadDropzone({ label, accept, onUploadSuccess, defaultUrl, isPdf, folder, showImagePreviews }: FileUploadDropzoneProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
@@ -187,7 +188,22 @@ export default function FileUploadDropzone({ label, accept, onUploadSuccess, def
             <div className="flex flex-col gap-1 mt-2 text-sm text-gray-500">
               {fileSize > 0 && <p><span className="font-semibold text-gray-600">Size:</span> {formatBytes(fileSize)}</p>}
               {dimensions && !isPdf && (
-                <p><span className="font-semibold text-gray-600">Dimensions:</span> {dimensions.width} x {dimensions.height} px</p>
+                <div className="space-y-1">
+                  <p><span className="font-semibold text-gray-600">Dimensions:</span> {dimensions.width} x {dimensions.height} px</p>
+                  {showImagePreviews && (
+                    <div className="mt-1">
+                      {Math.abs((dimensions.width / dimensions.height) - (16/9)) < 0.05 ? (
+                        <span className="inline-flex items-center gap-1 text-green-600 font-bold bg-green-50 px-2 py-1 rounded-md text-xs border border-green-200">
+                          ✅ Perfect 16:9 Aspect Ratio!
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 text-amber-600 font-bold bg-amber-50 px-2 py-1 rounded-md text-xs border border-amber-200">
+                          ⚠️ Aspect Ratio is {(dimensions.width / dimensions.height).toFixed(2)}:1 (Recommended 1.77:1)
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
               )}
             </div>
             {uploadedUrl && !isUploading && (
@@ -208,11 +224,36 @@ export default function FileUploadDropzone({ label, accept, onUploadSuccess, def
                 setDimensions(null); 
                 onUploadSuccess(""); 
               }}
-              className="text-xs text-red-500 font-semibold hover:underline bg-red-50 px-3 py-1.5 rounded-lg whitespace-nowrap"
+              className="text-xs text-red-500 font-semibold hover:underline bg-red-50 px-3 py-1.5 rounded-lg whitespace-nowrap self-start"
             >
               Remove
             </button>
           )}
+        </div>
+      )}
+
+      {/* Extended Previews */}
+      {currentPreviewUrl && showImagePreviews && !isPdf && !isUploading && (
+        <div className="mb-4 bg-gray-50 p-4 rounded-xl border border-gray-200 space-y-4">
+          <p className="text-sm font-bold text-gray-700 border-b border-gray-200 pb-2">Live Previews</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Thumbnail Preview */}
+            <div>
+              <p className="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wider">Thumbnail View (Course Card)</p>
+              <div className="w-full max-w-[300px] aspect-video rounded-[20px] overflow-hidden border border-gray-200 shadow-sm bg-white mx-auto md:mx-0">
+                <img src={currentPreviewUrl} className="w-full h-full object-cover" alt="Thumbnail Preview" />
+              </div>
+            </div>
+
+            {/* Banner Preview */}
+            <div>
+              <p className="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wider">Details View (Banner)</p>
+              <div className="w-full aspect-video max-h-[150px] rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-white mx-auto md:mx-0">
+                <img src={currentPreviewUrl} className="w-full h-full object-cover" alt="Banner Preview" />
+              </div>
+            </div>
+          </div>
         </div>
       )}
 

@@ -226,6 +226,7 @@ export default function CourseForm({ initialData }: { initialData?: any }) {
               defaultUrl={thumbnailUrl} 
               folder="courses/thumbnails"
               onUploadSuccess={(url) => setThumbnailUrl(url)} 
+              showImagePreviews={true}
             />
           </div>
           

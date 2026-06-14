@@ -5,7 +5,7 @@ import { FaChalkboardTeacher, FaGraduationCap, FaBook, FaChartLine, FaMedal } fr
 export default function Tutoring() {
   return (
     <section id="tutoring" className="py-[40px] md:py-[60px] pb-[50px] md:pb-[70px] bg-bg-light">
-      <div className="w-[90%] max-w-[1300px] mx-auto lg:grid lg:grid-cols-[1.1fr_1fr] gap-[40px] md:gap-[70px] items-center">
+      <div className="w-[90%] max-w-[1300px] mx-auto xl:grid xl:grid-cols-[1.1fr_1fr] gap-[40px] md:gap-[70px] items-center">
         
         {/* LEFT CONTENT */}
         <div className="mb-[30px] md:mb-0 lg:mb-0">

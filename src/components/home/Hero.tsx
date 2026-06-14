@@ -40,9 +40,9 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
   };
 
   return (
-    <section className="relative w-[95%] max-w-[1800px] mx-auto my-[10px] mb-[30px] flex flex-col lg:flex-row gap-6 lg:gap-10 justify-between items-center">
+    <section className="relative w-[95%] max-w-[1800px] mx-auto my-[10px] mb-[30px] flex flex-col xl:flex-row gap-6 xl:gap-10 justify-between items-center">
       {/* Left side: Slider */}
-      <div className="relative w-full lg:flex-1 aspect-video lg:aspect-[1900/965] overflow-hidden rounded-[40px] md:rounded-[50px] shadow-[0_5px_20px_rgba(0,0,0,0.15)] bg-white">
+      <div className="relative w-full xl:flex-1 aspect-video xl:aspect-[1900/965] overflow-hidden rounded-[40px] md:rounded-[50px] shadow-[0_5px_20px_rgba(0,0,0,0.15)] bg-white shrink-0">
         <div className="w-full h-full relative">
            {slides.map((src, index) => (
             <img
@@ -70,7 +70,7 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
       </div>
 
       {/* Right side: Inquiry Form */}
-      <div id="inquiry" className="w-full lg:w-[350px] xl:w-[380px] shrink-0 flex flex-col pt-8 lg:pt-0 z-10 relative">
+      <div id="inquiry" className="w-full lg:max-w-[500px] xl:max-w-none xl:w-[380px] flex flex-col pt-8 xl:pt-0 z-10 relative">
         
         <div className="flex justify-center px-4 md:px-8 translate-y-4 z-0 relative">
           <div className="bg-primary rounded-t-[30px] py-[12px] md:py-[14px] shadow-[-2px_-4px_10px_rgba(0,0,0,0.1)] font-bold text-white text-center text-[13px] md:text-[14px] w-[75%] md:w-[65%] uppercase tracking-wide">

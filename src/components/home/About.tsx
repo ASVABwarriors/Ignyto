@@ -2,7 +2,7 @@ import { H2, H3 } from "@/components/ui/Heading";
 export default function About() {
   return (
     <section id="about" className="bg-primary-light py-[40px] md:py-[60px] pb-[60px] md:pb-[100px]">
-      <div className="w-[90%] max-w-[1300px] mx-auto lg:grid lg:grid-cols-[1.2fr_1fr] gap-[40px] lg:gap-[60px] items-center">
+      <div className="w-[90%] max-w-[1300px] mx-auto xl:grid xl:grid-cols-[1.2fr_1fr] gap-[40px] xl:gap-[60px] items-center">
         
         {/* Left side: Text Content */}
         <div>

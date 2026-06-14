@@ -63,7 +63,7 @@ export default async function CourseDetailsPage({ params }: { params: Promise<{ 
       <div className="w-full max-w-[1200px] mx-auto bg-white rounded-[30px] shadow-xl overflow-hidden border border-gray-100">
         
         {/* Header Image */}
-        <div className="w-full h-[300px] md:h-[400px] bg-gray-100 relative">
+        <div className="w-full aspect-video max-h-[500px] bg-gray-100 relative">
           {course.thumbnailUrl ? (
             <img src={course.thumbnailUrl} alt={course.title} className="w-full h-full object-cover" />
           ) : course.imageName ? (
