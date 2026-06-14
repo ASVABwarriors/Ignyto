@@ -30,11 +30,11 @@ export default function Hero({ courses = [] }: { courses?: { id: string, title: 
     setIsSubmitting(true);
     const res = await submitInquiry(formData);
     setIsSubmitting(false);
-    if (res.success) {
-      setSubmitted(true);
-      setFormData({ name: "", email: "", phone: "", message: "" });
-      setTimeout(() => setSubmitted(false), 3000);
-    } else {
+      if (res.success) {
+        setSubmitted(true);
+        setFormData({ name: "", email: "", phone: "", message: "", grade: "", courseId: "", city: "", state: "" });
+        setTimeout(() => setSubmitted(false), 3000);
+      } else {
       alert("Something went wrong. Please try again later.");
     }
   };
