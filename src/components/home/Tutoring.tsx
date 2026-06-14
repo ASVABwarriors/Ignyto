@@ -48,10 +48,17 @@ export default function Tutoring() {
         </div>
 
         {/* RIGHT IMAGES */}
+        {/* 🌟 EASY IMAGE SWAP 🌟
+            Replace these 4 paths below with your full Cloudinary URLs. */}
         <div className="grid grid-cols-2 gap-[15px] md:gap-[40px]">
-          {[1, 2, 3, 4].map((num, i) => (
-            <div key={i} className={`overflow-hidden rounded-[15px] md:rounded-[25px] shadow-[0_8px_20px_rgba(0,0,0,0.15)] md:shadow-[0_12px_25px_rgba(0,0,0,0.15)] relative ${num === 1 ? 'lg:translate-y-[30px]' : num === 4 ? 'lg:-translate-y-[30px]' : ''}`}>
-              <img src={`/images/tutor${num}.jpg`} alt={`Tutor ${num}`} className="w-full h-[140px] sm:h-[180px] md:h-[260px] object-cover transition-transform duration-500 ease-in-out hover:scale-[1.08]" />
+          {[
+            "/images/tutor1.jpg",
+            "/images/tutor2.jpg",
+            "/images/tutor3.jpg",
+            "/images/tutor4.jpg"
+          ].map((imgSrc, i) => (
+            <div key={i} className={`overflow-hidden rounded-[15px] md:rounded-[25px] shadow-[0_8px_20px_rgba(0,0,0,0.15)] md:shadow-[0_12px_25px_rgba(0,0,0,0.15)] relative ${i === 0 ? 'lg:translate-y-[30px]' : i === 3 ? 'lg:-translate-y-[30px]' : ''}`}>
+              <img src={imgSrc} alt={`Tutor ${i + 1}`} className="w-full h-[140px] sm:h-[180px] md:h-[260px] object-cover transition-transform duration-500 ease-in-out hover:scale-[1.08]" />
             </div>
           ))}
         </div>
