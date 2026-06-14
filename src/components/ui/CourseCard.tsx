@@ -7,7 +7,7 @@ type ExtendedCourse = Course & { dates?: CourseDate[] };
 
 export default function CourseCard({ course }: { course: ExtendedCourse }) {
   return (
-    <div className="bg-white rounded-[20px] overflow-hidden shadow-[0_5px_20px_rgba(0,0,0,0.08)] border border-gray-200 transition-all duration-300 hover:-translate-y-2 hover:border-primary min-w-[85vw] sm:min-w-[320px] lg:w-full snap-center shrink-0">
+    <div className="bg-white rounded-[20px] overflow-hidden shadow-[0_5px_20px_rgba(0,0,0,0.08)] border border-gray-200 transition-all duration-300 hover:-translate-y-2 hover:border-primary min-w-[85vw] sm:min-w-[320px] lg:min-w-0 lg:w-full snap-center shrink-0">
       <div className="card-image">
         {course.thumbnailUrl ? (
           <img src={course.thumbnailUrl} alt={course.title} className="w-full h-[180px] md:h-[200px] object-cover block" />
