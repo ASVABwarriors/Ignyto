@@ -42,7 +42,7 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
   return (
     <section className="relative w-[95%] max-w-[1800px] mx-auto my-[10px] mb-[30px] flex flex-col xl:flex-row gap-6 xl:gap-10 justify-between items-center">
       {/* Left side: Slider */}
-      <div className="relative w-full xl:flex-1 aspect-video xl:aspect-[1900/965] overflow-hidden rounded-[40px] md:rounded-[50px] shadow-[0_5px_20px_rgba(0,0,0,0.15)] bg-white shrink-0">
+      <div className="relative w-full xl:flex-1 aspect-video md:aspect-[1900/965] xl:aspect-[16/11] 2xl:aspect-[1900/965] overflow-hidden rounded-[40px] md:rounded-[50px] shadow-[0_5px_20px_rgba(0,0,0,0.15)] bg-white shrink-0">
         <div className="w-full h-full relative">
            {slides.map((src, index) => (
             <img
@@ -79,8 +79,8 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
         </div>
 
         {/* Form Container */}
-        <div className="bg-white rounded-[30px] shadow-[0_10px_40px_rgba(0,0,0,0.15)] p-4 md:p-5 lg:p-6 flex flex-col justify-center z-10 relative">
-          <div className="text-center mb-4 md:mb-5">
+        <div className="bg-white rounded-[30px] shadow-[0_10px_40px_rgba(0,0,0,0.15)] p-4 md:p-5 lg:p-6 xl:p-5 flex flex-col justify-center z-10 relative">
+          <div className="text-center mb-3 md:mb-4">
             <h3 className="text-base md:text-lg font-bold text-primary-dark tracking-wide uppercase" suppressHydrationWarning>
               Reserve your seat <span className="text-secondary">for free demo</span>
             </h3>
@@ -95,8 +95,8 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
               <p className="text-sm text-gray-500 mt-2">Your inquiry has been sent. We'll be in touch shortly.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-3">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3">
+            <form onSubmit={handleSubmit} className="space-y-3 xl:space-y-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-2">
                 <div>
                   <label className="block text-xs font-semibold text-gray-700 mb-1">Your Name<span className="text-red-500">*</span></label>
                   <input 
@@ -105,7 +105,7 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
                     placeholder="e.g. John Doe" 
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400"
+                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400"
                   />
                 </div>
                 <div>
@@ -120,20 +120,20 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
                       placeholder="Mobile" 
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      className="flex-1 w-full px-3 py-2 rounded-r-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400 min-w-0"
+                      className="flex-1 w-full px-3 py-2 xl:py-1.5 rounded-r-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400 min-w-0"
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-2">
                 <div>
                   <label className="block text-xs font-semibold text-gray-700 mb-1">Select Grade<span className="text-red-500">*</span></label>
                   <select 
                     required 
                     value={formData.grade}
                     onChange={(e) => setFormData({...formData, grade: e.target.value})}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 bg-white"
+                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 bg-white"
                   >
                     <option value="">Select Grade</option>
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(g => (
@@ -147,7 +147,7 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
                   <select 
                     value={formData.courseId}
                     onChange={(e) => setFormData({...formData, courseId: e.target.value})}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 bg-white"
+                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 bg-white"
                   >
                     <option value="">General Inquiry</option>
                     {courses.map(course => (
@@ -165,11 +165,11 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
                   placeholder="e.g. email@example.com" 
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full px-3 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400"
+                  className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400"
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-2">
                 <div>
                   <label className="block text-xs font-semibold text-gray-700 mb-1">City</label>
                   <input 
@@ -177,7 +177,7 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
                     placeholder="e.g. New York" 
                     value={formData.city}
                     onChange={(e) => setFormData({...formData, city: e.target.value})}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400"
+                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400"
                   />
                 </div>
                 <div>
@@ -187,18 +187,18 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
                     placeholder="e.g. NY" 
                     value={formData.state}
                     onChange={(e) => setFormData({...formData, state: e.target.value})}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400"
+                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-2">
                 <div>
                   <label className="block text-xs font-semibold text-gray-700 mb-1">Select Date</label>
                   <select 
                     value={formData.trialDate}
                     onChange={(e) => setFormData({...formData, trialDate: e.target.value, trialTime: ""})}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 bg-white"
+                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 bg-white"
                   >
                     <option value="">No Preference</option>
                     {trialSlots.map(dateObj => (
@@ -214,7 +214,7 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
                     value={formData.trialTime}
                     onChange={(e) => setFormData({...formData, trialTime: e.target.value})}
                     disabled={!formData.trialDate}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 bg-white disabled:bg-gray-50 disabled:text-gray-400 disabled:cursor-not-allowed"
+                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 bg-white disabled:bg-gray-50 disabled:text-gray-400 disabled:cursor-not-allowed"
                   >
                     <option value="">No Preference</option>
                     {formData.trialDate && trialSlots.find(d => d.dateStr === formData.trialDate)?.timeSlots.map((slot: any) => (
@@ -232,14 +232,14 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
                   rows={2}
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  className="w-full px-3 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400 resize-none"
+                  className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400 resize-none"
                 ></textarea>
               </div>
 
               <button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-2.5 px-6 rounded-xl transition-all shadow-[0_5px_15px_rgba(0,118,255,0.3)] hover:shadow-[0_8px_20px_rgba(0,118,255,0.4)] hover:-translate-y-[2px] disabled:opacity-70 disabled:hover:translate-y-0 mt-3 text-base"
+                className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-2.5 xl:py-2 px-6 rounded-xl transition-all shadow-[0_5px_15px_rgba(0,118,255,0.3)] hover:shadow-[0_8px_20px_rgba(0,118,255,0.4)] hover:-translate-y-[2px] disabled:opacity-70 disabled:hover:translate-y-0 mt-3 xl:mt-2 text-base"
               >
                 {isSubmitting ? "SENDING..." : "SUBMIT"}
               </button>
