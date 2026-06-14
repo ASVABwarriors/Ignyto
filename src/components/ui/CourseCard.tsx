@@ -55,6 +55,7 @@ export default function CourseCard({ course }: { course: ExtendedCourse }) {
           Enroll Now
         </Link>
       </div>
-    </div>
+      </div>
+    </Link>
   );
 }
