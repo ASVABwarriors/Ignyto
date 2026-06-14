@@ -7,7 +7,7 @@ type ExtendedCourse = Course & { dates?: CourseDate[] };
 
 export default function CourseCard({ course }: { course: ExtendedCourse }) {
   return (
-    <Link href={`/course/${course.slug}`} className="block h-full group">
+    <Link href={`/course/${course.slug}`} className="block h-full group min-w-[280px] sm:min-w-[320px] lg:min-w-0 lg:w-full snap-center shrink-0">
       <div className="bg-white rounded-[25px] overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.05)] border border-gray-100 transition-all duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.1)] hover:-translate-y-2 h-full flex flex-col relative">
         
         {/* Image Container */}
