@@ -65,6 +65,8 @@ export async function createCourse(formData: FormData) {
 
   revalidatePath("/admin/dashboard/courses");
   revalidatePath("/admin/dashboard");
+  revalidatePath("/courses");
+  revalidatePath("/");
   return { success: true };
 }
 
@@ -129,6 +131,9 @@ export async function updateCourse(id: string, formData: FormData) {
 
   revalidatePath("/admin/dashboard/courses");
   revalidatePath("/admin/dashboard");
+  revalidatePath(`/course/${slug}`);
+  revalidatePath("/courses");
+  revalidatePath("/");
   return { success: true };
 }
 
@@ -142,5 +147,7 @@ export async function deleteCourse(id: string) {
 
   revalidatePath("/admin/dashboard/courses");
   revalidatePath("/admin/dashboard");
+  revalidatePath("/courses");
+  revalidatePath("/");
   return { success: true };
 }
