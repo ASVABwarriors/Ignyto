@@ -114,7 +114,7 @@ export default async function CourseDetailsPage({ params }: { params: Promise<{ 
               )}
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-6 lg:sticky lg:top-[20px] lg:h-fit">
               
               {/* Card 1: Batch Dates */}
               {course.dates && course.dates.length > 0 && (
@@ -149,7 +149,7 @@ export default async function CourseDetailsPage({ params }: { params: Promise<{ 
               })()}
 
               {/* Card 3: Course Fee & Actions */}
-              <div className="bg-white rounded-[20px] p-[30px] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.08)] relative lg:sticky lg:top-[20px]">
+              <div className="bg-white rounded-[20px] p-[30px] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
                 <div className="text-center mb-[25px]">
                   <span className="block text-[#555] font-semibold mb-1">Course Fee</span>
                   <span className="text-[40px] font-bold text-green-600 flex items-center justify-center gap-2">
