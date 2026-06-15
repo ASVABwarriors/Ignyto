@@ -42,10 +42,7 @@ export default function CourseCard({ course }: { course: ExtendedCourse }) {
 
         {course.pdfUrl && (
           <a 
-            href={course.pdfUrl} 
-            target="_blank"
-            download
-            rel="noreferrer"
+            href={`/api/download?url=${encodeURIComponent(course.pdfUrl)}&filename=${encodeURIComponent(course.title + ' Syllabus')}`}
             className="relative z-20 flex items-center gap-2 no-underline text-primary mb-[12px] font-semibold transition-colors hover:text-primary-dark text-[14px] md:text-[16px]"
           >
             <FaFilePdf /> Download Syllabus

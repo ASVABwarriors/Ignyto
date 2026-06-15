@@ -81,10 +81,7 @@ export default async function ViewCourseAdminPage({ params }: { params: Promise<
             <H3 className="font-bold text-gray-800 mb-4 border-b pb-2">Course Material</H3>
             {course.pdfUrl ? (
               <a 
-                href={course.pdfUrl} 
-                target="_blank"
-                download
-                rel="noreferrer"
+                href={`/api/download?url=${encodeURIComponent(course.pdfUrl)}&filename=${encodeURIComponent(course.title + ' Syllabus')}`}
                 className="flex items-center justify-center gap-2 w-full text-center border-2 border-primary text-primary py-3 rounded-xl font-bold transition-all hover:bg-primary hover:text-white"
               >
                 <FaFilePdf /> Download Syllabus

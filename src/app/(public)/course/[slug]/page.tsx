@@ -101,11 +101,11 @@ export default async function CourseDetailsPage({ params }: { params: Promise<{ 
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-[40px]">
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 min-w-0">
               <H2 className="text-[28px] font-bold text-text-dark mb-[20px]">Course Overview</H2>
               {course.description ? (
                 <div 
-                  className="text-lg text-[#444] leading-relaxed [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_li]:mb-1 [&_p]:mb-4 [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:mb-4 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mb-3 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:mb-2 [&_strong]:font-bold [&_em]:italic" 
+                  className="text-lg text-[#444] leading-relaxed break-words [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_li]:mb-1 [&_p]:mb-4 [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:mb-4 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mb-3 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:mb-2 [&_strong]:font-bold [&_em]:italic [&_table]:block [&_table]:overflow-x-auto [&_table]:max-w-full [&_table]:w-full [&_img]:max-w-full [&_img]:h-auto" 
                   dangerouslySetInnerHTML={{ __html: course.description }} 
                   suppressHydrationWarning={true}
                 />
@@ -149,7 +149,7 @@ export default async function CourseDetailsPage({ params }: { params: Promise<{ 
               })()}
 
               {/* Card 3: Course Fee & Actions */}
-              <div className="bg-white rounded-[20px] p-[30px] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.08)] sticky top-[20px]">
+              <div className="bg-white rounded-[20px] p-[30px] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.08)] relative lg:sticky lg:top-[20px]">
                 <div className="text-center mb-[25px]">
                   <span className="block text-[#555] font-semibold mb-1">Course Fee</span>
                   <span className="text-[40px] font-bold text-green-600 flex items-center justify-center gap-2">
@@ -166,10 +166,7 @@ export default async function CourseDetailsPage({ params }: { params: Promise<{ 
 
                 {course.pdfUrl && (
                   <a 
-                    href={course.pdfUrl} 
-                    target="_blank"
-                    download
-                    rel="noreferrer"
+                    href={`/api/download?url=${encodeURIComponent(course.pdfUrl)}&filename=${encodeURIComponent(course.title + ' Syllabus')}`}
                     className="flex items-center justify-center gap-2 w-full text-center border-2 border-primary text-primary py-[14px] rounded-xl text-[18px] font-bold transition-all duration-300 hover:bg-primary hover:text-white"
                   >
                     <FaFilePdf /> Download Syllabus
