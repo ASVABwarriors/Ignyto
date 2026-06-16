@@ -5,7 +5,7 @@ import { submitInquiry } from "@/app/actions/inquiry";
 export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id: string, title: string }[], trialSlots?: any[] }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   
-  // 🌟 EASY IMAGE SWAP 🌟
+  // 🌟 EASY IMAGE SWAP 
   // You can easily use your Cloudinary links here. Just replace the local "/images/..." paths 
   // with your full Cloudinary URLs (e.g., "https://res.cloudinary.com/your-id/image/upload/banner.png")
   const slides = [
