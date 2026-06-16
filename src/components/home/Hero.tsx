@@ -40,16 +40,16 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
   };
 
   return (
-    <section className="relative w-[95%] max-w-[1500px] mx-auto my-[10px] mb-[30px] flex flex-col xl:flex-row gap-6 xl:gap-8 justify-between items-center">
+    <section className="relative w-[95%] max-w-[1600px] mx-auto my-[10px] mb-[30px] flex flex-col xl:flex-row gap-6 xl:gap-6 items-start">
       {/* Left side: Slider */}
-      <div className="relative w-full xl:w-[1050px] xl:min-w-[1050px] aspect-[1900/965] overflow-hidden rounded-[40px] md:rounded-[50px] shadow-[0_5px_20px_rgba(0,0,0,0.15)] bg-white shrink-0">
+      <div className="relative w-full xl:w-[72%] aspect-[1900/965] overflow-hidden rounded-[40px] md:rounded-[50px] shadow-[0_5px_20px_rgba(0,0,0,0.15)] bg-white">
         <div className="w-full h-full relative">
            {slides.map((src, index) => (
             <img
               key={index}
               src={src}
               alt={`Banner ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-fill transition-opacity duration-800 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-800 ease-in-out ${index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"}`}
             />
           ))}
         </div>
@@ -70,7 +70,7 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
       </div>
 
       {/* Right side: Inquiry Form */}
-      <div id="inquiry" className="w-full lg:max-w-[500px] xl:w-[380px] xl:min-w-[380px] flex flex-col pt-8 xl:pt-0 z-10 relative shrink-0">
+      <div id="inquiry" className="w-full xl:w-[28%] min-w-[350px] flex flex-col pt-8 xl:pt-0 z-10 relative">
         
         <div className="flex justify-center px-4 md:px-8 translate-y-4 z-0 relative">
           <div className="bg-primary rounded-t-[30px] py-[12px] md:py-[14px] shadow-[-2px_-4px_10px_rgba(0,0,0,0.1)] font-bold text-white text-center text-[13px] md:text-[14px] w-[75%] md:w-[65%] uppercase tracking-wide">
