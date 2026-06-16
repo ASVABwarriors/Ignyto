@@ -105,7 +105,7 @@ export default async function CourseDetailsPage({ params }: { params: Promise<{ 
               <H2 className="text-[28px] font-bold text-text-dark mb-[20px]">Course Overview</H2>
               {course.description ? (
                 <div 
-                  className="text-lg text-[#444] leading-relaxed break-words [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_li]:mb-1 [&_p]:mb-4 [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:mb-4 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mb-3 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:mb-2 [&_strong]:font-bold [&_em]:italic [&_table]:block [&_table]:overflow-x-auto [&_table]:max-w-full [&_table]:w-full [&_img]:max-w-full [&_img]:h-auto" 
+                  className="text-lg text-[#444] leading-relaxed [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_li]:mb-1 [&_p]:mb-4 [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:mb-4 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mb-3 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:mb-2 [&_strong]:font-bold [&_em]:italic [&_table]:block [&_table]:overflow-x-auto [&_table]:max-w-full [&_table]:w-full [&_img]:max-w-full [&_img]:h-auto" 
                   dangerouslySetInnerHTML={{ __html: course.description }} 
                   suppressHydrationWarning={true}
                 />
