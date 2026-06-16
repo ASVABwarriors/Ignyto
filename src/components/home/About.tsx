@@ -20,7 +20,7 @@ export default function About() {
               Are you tired of the mundane and predictable questions that plague most Olympiad examinations? If you're looking for a refreshing
               change, you've come to the right place! Our Olympiad Portal is
               designed to inspire students with innovative challenges that
-              strengthen conceptual understanding and analytical thinking.
+              strengthen conceptual understanding and analytical
             </p>
             <p className="text-[16px] md:text-[18px] leading-[1.6] md:leading-[1.8] text-[#333] mb-[25px]">
               We believe every student has untapped potential. Through
