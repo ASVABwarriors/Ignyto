@@ -49,7 +49,7 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
               key={index}
               src={src}
               alt={`Banner ${index + 1}`}
-              className={`absolute w-full h-full object-cover transition-opacity duration-800 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              className={`absolute w-full h-full object-contain transition-opacity duration-800 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
             />
           ))}
         </div>
