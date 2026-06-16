@@ -1,16 +1,16 @@
 import { H2, H3 } from "@/components/ui/Heading";
 export default function About() {
   return (
-    <section id="about" className="bg-primary-light py-[20px] md:py-[50px]">
+    <section id="about" className="bg-primary-light py-[20px] md:py-[30px]">
       <div className="w-[90%] max-w-[1300px] mx-auto xl:grid xl:grid-cols-[1.2fr_1fr] gap-[40px] xl:gap-[60px] items-center">
         
         {/* Left side: Text Content */}
         <div>
           <div className="mb-[20px] md:mb-[30px]">
-            <H2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] text-primary mt-[10px] mb-[10px] font-bold">
+            <H2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] text-primary mt-0px mb-[5px] font-bold">
               About Us
             </H2>
-            <h3 className="text-[16px] md:text-[18px] font-bold text-[#1a1a1a] tracking-wide">
+            <h3 className="text-[16px] md:text-[18px] font-bold text-[#2563EB] tracking-wide">
               Inspiring Confidence. Igniting Potential.
             </h3>
           </div>
