@@ -114,66 +114,68 @@ export default async function CourseDetailsPage({ params }: { params: Promise<{ 
               )}
             </div>
 
-            <div className="space-y-6 lg:sticky lg:top-[20px] lg:h-fit">
-              
-              {/* Card 1: Batch Dates */}
-              {course.dates && course.dates.length > 0 && (
-                <div className="bg-white rounded-[20px] p-[25px] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
-                  <p className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-4 border-b border-gray-100 pb-2">Batch Dates</p>
-                  <ul className="space-y-3">
-                    {course.dates.map(date => (
-                      <li key={date.id} className="flex items-center gap-3 font-semibold text-gray-800 bg-gray-50 p-3 rounded-xl border border-gray-100">
-                        <FaCalendarAlt className="text-primary"/> {date.dateStr}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Card 2: Time Slots */}
-              {course.dates && course.dates.length > 0 && (() => {
-                const allTimeSlots = Array.from(new Set(course.dates.flatMap(d => d.timeSlots.map(t => t.timeStr))));
-                if (allTimeSlots.length === 0) return null;
-                return (
+            <div>
+              <div className="space-y-6 lg:sticky lg:top-[20px]">
+                
+                {/* Card 1: Batch Dates */}
+                {course.dates && course.dates.length > 0 && (
                   <div className="bg-white rounded-[20px] p-[25px] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
-                    <p className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-4 border-b border-gray-100 pb-2">Time Slots</p>
-                    <div className="flex flex-col gap-3">
-                      {allTimeSlots.map((slot, idx) => (
-                        <div key={idx} className="flex items-center gap-3 font-semibold text-gray-800 bg-gray-50 p-3 rounded-xl border border-gray-100">
-                          <FaRegClock className="text-primary"/> {slot}
-                        </div>
+                    <p className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-4 border-b border-gray-100 pb-2">Batch Dates</p>
+                    <ul className="space-y-3">
+                      {course.dates.map(date => (
+                        <li key={date.id} className="flex items-center gap-3 font-semibold text-gray-800 bg-gray-50 p-3 rounded-xl border border-gray-100">
+                          <FaCalendarAlt className="text-primary"/> {date.dateStr}
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   </div>
-                );
-              })()}
+                )}
 
-              {/* Card 3: Course Fee & Actions */}
-              <div className="bg-white rounded-[20px] p-[30px] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
-                <div className="text-center mb-[25px]">
-                  <span className="block text-[#555] font-semibold mb-1">Course Fee</span>
-                  <span className="text-[40px] font-bold text-green-600 flex items-center justify-center gap-2">
-                    ${course.fee}
-                  </span>
+                {/* Card 2: Time Slots */}
+                {course.dates && course.dates.length > 0 && (() => {
+                  const allTimeSlots = Array.from(new Set(course.dates.flatMap(d => d.timeSlots.map(t => t.timeStr))));
+                  if (allTimeSlots.length === 0) return null;
+                  return (
+                    <div className="bg-white rounded-[20px] p-[25px] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+                      <p className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-4 border-b border-gray-100 pb-2">Time Slots</p>
+                      <div className="flex flex-col gap-3">
+                        {allTimeSlots.map((slot, idx) => (
+                          <div key={idx} className="flex items-center gap-3 font-semibold text-gray-800 bg-gray-50 p-3 rounded-xl border border-gray-100">
+                            <FaRegClock className="text-primary"/> {slot}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
+
+                {/* Card 3: Course Fee & Actions */}
+                <div className="bg-white rounded-[20px] p-[30px] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+                  <div className="text-center mb-[25px]">
+                    <span className="block text-[#555] font-semibold mb-1">Course Fee</span>
+                    <span className="text-[40px] font-bold text-green-600 flex items-center justify-center gap-2">
+                      ${course.fee}
+                    </span>
+                  </div>
+
+                  <a 
+                    href="#registration-form" 
+                    className="block text-center bg-primary text-white py-[16px] rounded-xl text-xl font-bold transition-transform hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,118,255,0.3)] shadow-md mb-4"
+                  >
+                    Enroll Now
+                  </a>
+
+                  {course.pdfUrl && (
+                    <a 
+                      href={`/api/download?url=${encodeURIComponent(course.pdfUrl)}&filename=${encodeURIComponent(course.title + ' Syllabus')}`}
+                      className="flex items-center justify-center gap-2 w-full text-center border-2 border-primary text-primary py-[14px] rounded-xl text-[18px] font-bold transition-all duration-300 hover:bg-primary hover:text-white"
+                    >
+                      <FaFilePdf /> Download Syllabus
+                    </a>
+                  )}
                 </div>
 
-                <a 
-                  href="#registration-form" 
-                  className="block text-center bg-primary text-white py-[16px] rounded-xl text-xl font-bold transition-transform hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,118,255,0.3)] shadow-md mb-4"
-                >
-                  Enroll Now
-                </a>
-
-                {course.pdfUrl && (
-                  <a 
-                    href={`/api/download?url=${encodeURIComponent(course.pdfUrl)}&filename=${encodeURIComponent(course.title + ' Syllabus')}`}
-                    className="flex items-center justify-center gap-2 w-full text-center border-2 border-primary text-primary py-[14px] rounded-xl text-[18px] font-bold transition-all duration-300 hover:bg-primary hover:text-white"
-                  >
-                    <FaFilePdf /> Download Syllabus
-                  </a>
-                )}
               </div>
-
             </div>
           </div>
         </div>
