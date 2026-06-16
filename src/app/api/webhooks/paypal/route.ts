@@ -1,13 +1,17 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+const PAYPAL_API_URL = process.env.PAYPAL_MODE === "live"
+  ? "https://api-m.paypal.com"
+  : "https://api-m.sandbox.paypal.com";
+
 // Helper to get PayPal Access Token
 async function getPayPalAccessToken() {
   const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
   const secret = process.env.PAYPAL_SECRET;
   const auth = Buffer.from(`${clientId}:${secret}`).toString("base64");
 
-  const response = await fetch("https://api-m.sandbox.paypal.com/v1/oauth2/token", {
+  const response = await fetch(`${PAYPAL_API_URL}/v1/oauth2/token`, {
     method: "POST",
     headers: {
       "Authorization": `Basic ${auth}`,
@@ -25,7 +29,7 @@ async function verifySignature(req: Request, bodyText: string) {
   const accessToken = await getPayPalAccessToken();
   const webhookId = process.env.PAYPAL_WEBHOOK_ID;
 
-  const response = await fetch("https://api-m.sandbox.paypal.com/v1/notifications/verify-webhook-signature", {
+  const response = await fetch(`${PAYPAL_API_URL}/v1/notifications/verify-webhook-signature`, {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${accessToken}`,
