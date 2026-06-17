@@ -219,7 +219,7 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
                   >
                     <option value="" disabled hidden>Select Time</option>
                     {formData.trialDate && trialSlots.find(d => d.dateStr === formData.trialDate)?.timeSlots.map((slot: any) => (
-                      <option key={slot.id} value={slot.timeStr}>{slot.timeStr}</option>
+                      <option key={slot.id} value={slot.timeStr}>{slot.timeStr} (PST)</option>
                     ))}
                   </select>
                 </div>
