@@ -77,7 +77,7 @@ export default async function CourseDetailsPage({ params }: { params: Promise<{ 
         </div>
 
         {/* Content */}
-        <div className="p-[30px] md:p-[50px]">
+        <div className="p-[30px] md:p-[50px] pb-[15px] md:pb-[25px]">
           <H1 className="text-[clamp(1.85rem,4.5vw,2.75rem)] font-bold text-primary-dark mb-[20px] leading-tight">{course.title}</H1>
           
           {/* Metadata Top Row */}
@@ -181,7 +181,7 @@ export default async function CourseDetailsPage({ params }: { params: Promise<{ 
         </div>
 
         {/* Registration Form below Course Overview */}
-        <div className="bg-gray-50/50 p-[30px] md:p-[50px] border-t border-gray-100">
+        <div className="bg-gray-50/50 p-[30px] md:p-[50px] pt-[15px] md:pt-[25px] border-t border-gray-100">
           <RegisterClient course={course} />
         </div>
 

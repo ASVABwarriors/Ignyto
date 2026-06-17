@@ -3,6 +3,7 @@ import Hero from "@/components/home/Hero";
 import About from "@/components/home/About";
 import SummerCamps from "@/components/home/SummerCamps";
 import Tutoring from "@/components/home/Tutoring";
+import Faqs from "@/components/home/Faqs";
 
 export const dynamic = "force-dynamic";
 
@@ -16,6 +17,11 @@ export default async function Home() {
     orderBy: { dateStr: "asc" },
   });
 
+  const faqs = await prisma.faq.findMany({
+    where: { isActive: true },
+    orderBy: { order: "asc" },
+  });
+
   return (
     <>
       <Hero 
@@ -25,6 +31,7 @@ export default async function Home() {
       <About />
       <SummerCamps courses={courses} />
       <Tutoring />
+      <Faqs initialFaqs={faqs} />
     </>
   );
 }

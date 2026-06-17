@@ -10,9 +10,9 @@ export default function About() {
             <H2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] text-primary mt-0px mb-[5px] font-bold">
               About Us
             </H2>
-            <h3 className="text-[16px] md:text-[18px] font-bold text-[#2563EB] tracking-wide">
+            <H3 className="text-[16px] md:text-[18px] font-bold text-[#2563EB] tracking-wide">
               Inspiring Confidence. Igniting Potential.
-            </h3>
+            </H3>
           </div>
           
           <div className="p-0">

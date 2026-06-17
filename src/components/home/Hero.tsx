@@ -40,16 +40,16 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
   };
 
   return (
-    <section className="relative w-[95%] max-w-[1800px] mx-auto my-[10px] mb-[30px] flex flex-col xl:flex-row gap-6 xl:gap-10 justify-between items-center">
+    <section className="relative w-[95%] max-w-[1800px] mx-auto my-[10px] mb-[30px] flex flex-col lg:flex-row gap-6 lg:gap-8 justify-between items-center">
       {/* Left side: Slider */}
-      <div className="relative w-full xl:flex-1 aspect-video md:aspect-[1900/965] xl:aspect-[16/11] 2xl:aspect-[1900/965] overflow-hidden rounded-[40px] md:rounded-[50px] shadow-[0_5px_20px_rgba(0,0,0,0.15)] bg-white shrink-0">
+      <div className="relative w-full lg:flex-1 aspect-video overflow-hidden rounded-[40px] md:rounded-[50px] shadow-[0_5px_20px_rgba(0,0,0,0.15)] bg-white shrink-0">
         <div className="w-full h-full relative">
            {slides.map((src, index) => (
             <img
               key={index}
               src={src}
               alt={`Banner ${index + 1}`}
-              className={`absolute w-full h-full object-contain transition-opacity duration-800 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              className={`absolute w-full h-full object-cover transition-opacity duration-800 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
             />
           ))}
         </div>
@@ -70,7 +70,7 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
       </div>
 
       {/* Right side: Inquiry Form */}
-      <div id="inquiry" className="w-full lg:max-w-[500px] xl:max-w-none xl:w-[380px] flex flex-col pt-8 xl:pt-0 z-10 relative">
+      <div id="inquiry" className="w-full md:max-w-[420px] lg:max-w-none lg:w-[280px] xl:w-[320px] 2xl:w-[360px] flex flex-col pt-8 lg:pt-0 z-10 relative">
         
         <div className="flex justify-center px-4 md:px-8 translate-y-4 z-0 relative">
           <div className="bg-primary rounded-t-[30px] py-[12px] md:py-[14px] shadow-[-2px_-4px_10px_rgba(0,0,0,0.1)] font-bold text-white text-center text-[13px] md:text-[14px] w-[75%] md:w-[65%] uppercase tracking-wide">
@@ -79,9 +79,9 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
         </div>
 
         {/* Form Container */}
-        <div className="bg-white rounded-[30px] shadow-[0_10px_40px_rgba(0,0,0,0.15)] p-4 md:p-5 lg:p-6 xl:p-5 flex flex-col justify-center z-10 relative">
+        <div className="bg-white rounded-[30px] shadow-[0_10px_40px_rgba(0,0,0,0.15)] p-4 md:p-5 lg:p-4 xl:p-3 2xl:p-5 flex flex-col justify-center z-10 relative">
           <div className="text-center mb-3 md:mb-4">
-            <h3 className="text-base md:text-lg font-bold text-primary-dark tracking-wide uppercase" suppressHydrationWarning>
+            <h3 className="text-base md:text-lg lg:text-base xl:text-sm 2xl:text-lg font-bold text-primary-dark tracking-wide uppercase" suppressHydrationWarning>
               Reserve your seat <span className="text-secondary">for free demo</span>
             </h3>
           </div>
@@ -95,21 +95,21 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
               <p className="text-sm text-gray-500 mt-2">Your inquiry has been sent. We'll be in touch shortly.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-3 xl:space-y-2">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-2">
+            <form onSubmit={handleSubmit} className="space-y-3 lg:space-y-2 xl:space-y-1.5 2xl:space-y-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3 lg:gap-2 xl:gap-1.5 2xl:gap-2">
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">Your Name<span className="text-red-500">*</span></label>
+                  <label className="block text-xs lg:text-[10px] xl:text-[11px] 2xl:text-xs font-semibold text-gray-700 mb-1">Your Name<span className="text-red-500">*</span></label>
                   <input 
                     type="text" 
                     required 
                     placeholder="e.g. John Doe" 
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400"
+                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] lg:text-[11px] xl:text-[12px] 2xl:text-[13px] text-gray-800 placeholder-gray-400"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">Phone Number<span className="text-red-500">*</span></label>
+                  <label className="block text-xs lg:text-[10px] xl:text-[11px] 2xl:text-xs font-semibold text-gray-700 mb-1">Phone Number<span className="text-red-500">*</span></label>
                   <div className="flex">
                     <span className="inline-flex items-center px-3 rounded-l-xl border border-r-0 border-gray-200 bg-gray-50 text-gray-500 text-[13px]">
                       +1
@@ -120,20 +120,20 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
                       placeholder="Mobile" 
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      className="flex-1 w-full px-3 py-2 xl:py-1.5 rounded-r-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400 min-w-0"
+                      className="flex-1 w-full px-3 py-2 xl:py-1.5 rounded-r-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] lg:text-[11px] xl:text-[12px] 2xl:text-[13px] text-gray-800 placeholder-gray-400 min-w-0"
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3 lg:gap-2 xl:gap-1.5 2xl:gap-2">
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">Select Grade<span className="text-red-500">*</span></label>
+                  <label className="block text-xs lg:text-[10px] xl:text-[11px] 2xl:text-xs font-semibold text-gray-700 mb-1">Select Grade<span className="text-red-500">*</span></label>
                   <select 
                     required 
                     value={formData.grade}
                     onChange={(e) => setFormData({...formData, grade: e.target.value})}
-                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 bg-white"
+                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] lg:text-[11px] xl:text-[12px] 2xl:text-[13px] text-gray-800 bg-white"
                   >
                     <option value="">Select Grade</option>
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(g => (
@@ -143,64 +143,65 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">Interested Course</label>
+                  <label className="block text-xs lg:text-[10px] xl:text-[11px] 2xl:text-xs font-semibold text-gray-700 mb-1">Interested Course</label>
                   <select 
                     value={formData.courseId}
                     onChange={(e) => setFormData({...formData, courseId: e.target.value})}
-                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 bg-white"
+                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] lg:text-[11px] xl:text-[12px] 2xl:text-[13px] text-gray-800 bg-white"
                   >
-                    <option value="">General Inquiry</option>
+                    <option value="" disabled hidden>General Inquiry</option>
                     {courses.map(course => (
                       <option key={course.id} value={course.id}>{course.title}</option>
                     ))}
+                    <option value="1-1-tutoring">1-1 Tutoring</option>
                   </select>
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Email Address<span className="text-red-500">*</span></label>
+                <label className="block text-xs lg:text-[10px] xl:text-[11px] 2xl:text-xs font-semibold text-gray-700 mb-1">Email Address<span className="text-red-500">*</span></label>
                 <input 
                   type="email" 
                   required 
                   placeholder="e.g. email@example.com" 
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400"
+                  className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] lg:text-[11px] xl:text-[12px] 2xl:text-[13px] text-gray-800 placeholder-gray-400"
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3 lg:gap-2 xl:gap-1.5 2xl:gap-2">
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">City</label>
+                  <label className="block text-xs lg:text-[10px] xl:text-[11px] 2xl:text-xs font-semibold text-gray-700 mb-1">City</label>
                   <input 
                     type="text" 
                     placeholder="e.g. New York" 
                     value={formData.city}
                     onChange={(e) => setFormData({...formData, city: e.target.value})}
-                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400"
+                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] lg:text-[11px] xl:text-[12px] 2xl:text-[13px] text-gray-800 placeholder-gray-400"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">State</label>
+                  <label className="block text-xs lg:text-[10px] xl:text-[11px] 2xl:text-xs font-semibold text-gray-700 mb-1">State</label>
                   <input 
                     type="text" 
                     placeholder="e.g. NY" 
                     value={formData.state}
                     onChange={(e) => setFormData({...formData, state: e.target.value})}
-                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400"
+                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] lg:text-[11px] xl:text-[12px] 2xl:text-[13px] text-gray-800 placeholder-gray-400"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3 lg:gap-2 xl:gap-1.5 2xl:gap-2">
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">Select Date</label>
+                  <label className="block text-xs lg:text-[10px] xl:text-[11px] 2xl:text-xs font-semibold text-gray-700 mb-1">Select Date</label>
                   <select 
                     value={formData.trialDate}
                     onChange={(e) => setFormData({...formData, trialDate: e.target.value, trialTime: ""})}
-                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 bg-white"
+                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] lg:text-[11px] xl:text-[12px] 2xl:text-[13px] text-gray-800 bg-white"
                   >
-                    <option value="">No Preference</option>
+                    <option value="" disabled hidden>Select Date</option>
                     {trialSlots.map(dateObj => (
                       <option key={dateObj.id} value={dateObj.dateStr}>
                         {new Date(dateObj.dateStr + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
@@ -209,14 +210,14 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">Select Time</label>
+                  <label className="block text-xs lg:text-[10px] xl:text-[11px] 2xl:text-xs font-semibold text-gray-700 mb-1">Select Time</label>
                   <select 
                     value={formData.trialTime}
                     onChange={(e) => setFormData({...formData, trialTime: e.target.value})}
                     disabled={!formData.trialDate}
-                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 bg-white disabled:bg-gray-50 disabled:text-gray-400 disabled:cursor-not-allowed"
+                    className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] lg:text-[11px] xl:text-[12px] 2xl:text-[13px] text-gray-800 bg-white disabled:bg-gray-50 disabled:text-gray-400 disabled:cursor-not-allowed"
                   >
-                    <option value="">No Preference</option>
+                    <option value="" disabled hidden>Select Time</option>
                     {formData.trialDate && trialSlots.find(d => d.dateStr === formData.trialDate)?.timeSlots.map((slot: any) => (
                       <option key={slot.id} value={slot.timeStr}>{slot.timeStr}</option>
                     ))}
@@ -225,14 +226,13 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Message<span className="text-red-500">*</span></label>
+                <label className="block text-xs lg:text-[10px] xl:text-[11px] 2xl:text-xs font-semibold text-gray-700 mb-1">Message</label>
                 <textarea 
-                  required 
                   placeholder="How can we help?" 
                   rows={2}
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] text-gray-800 placeholder-gray-400 resize-none"
+                  className="w-full px-3 py-2 xl:py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[13px] lg:text-[11px] xl:text-[12px] 2xl:text-[13px] text-gray-800 placeholder-gray-400 resize-none"
                 ></textarea>
               </div>
 
