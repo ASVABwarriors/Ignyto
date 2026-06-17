@@ -71,7 +71,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Ignyto Tutoring. All Rights Reserved.
           </div>
           <div className="text-center md:text-right">
-            Crafted by <a href="https://www.nirmeva.com" target="_blank" rel="noopener noreferrer" className="hover:underline font-semibold text-white">Nirmeva</a>
+            Crafted by <a href="https://www.nirmeva.com/?utm_source=ignyto_tutoring&utm_medium=footer_link&utm_campaign=portfolio_credit" target="_blank" rel="noopener noreferrer" className="hover:underline font-semibold text-white">Nirmeva</a>
           </div>
         </div>
       </div>

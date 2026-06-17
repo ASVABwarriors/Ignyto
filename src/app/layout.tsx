@@ -14,9 +14,9 @@ export const metadata: Metadata = {
     default: "Ignyto Tutoring - Premier Academic & Summer Camps",
   },
   description: "Join Ignyto Tutoring to inspire students with innovative challenges, online academic programs, and expert-led summer camps in Math, Coding, and logic.",
-  keywords: ["tutoring", "summer camps", "math camps", "coding camps", "online tutoring", "academic competitions", "STEM learning", "Ignyto"],
-  authors: [{ name: "Ignyto Tutoring" }],
-  creator: "Ignyto Tutoring",
+  keywords: ["tutoring", "summer camps", "math camps", "coding camps", "online tutoring", "academic competitions", "STEM learning", "Ignyto", "Nirmeva", "Nirmeva Studio", "Nirmeva Web Development"],
+  authors: [{ name: "Ignyto Tutoring" }, { name: "Nirmeva", url: "https://www.nirmeva.com/?utm_source=ignyto_tutoring&utm_medium=seo_author" }],
+  creator: "Nirmeva",
   openGraph: {
     title: "Ignyto Tutoring - Premier Academic & Summer Camps",
     description: "Join Ignyto Tutoring to inspire students with innovative challenges, online academic programs, and expert-led summer camps.",
