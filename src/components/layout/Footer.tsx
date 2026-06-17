@@ -51,13 +51,14 @@ export default function Footer() {
             </p>
             <div className="flex flex-wrap items-center gap-[10px] text-[14px] md:text-[15px] leading-[1.6] mt-[12px]">
               <strong>Call/WhatsApp:</strong>
+              <span>+91 77200 77480</span>
               <a 
                 href="https://wa.me/917720077480" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="inline-flex items-center gap-[6px] bg-[#25D366] text-white px-[14px] py-[6px] rounded-[50px] text-[13px] md:text-[14px] font-bold transition-transform hover:-translate-y-[2px] shadow-sm"
+                className="inline-flex items-center gap-[6px] bg-[#25D366] text-white px-[12px] py-[4px] rounded-[50px] text-[12px] md:text-[13px] font-bold transition-transform hover:-translate-y-[2px] shadow-sm ml-1"
               >
-                <i className="fab fa-whatsapp text-[16px]"></i> +91 77200 77480
+                <i className="fab fa-whatsapp text-[14px]"></i> Message Us
               </a>
             </div>
           </div>
