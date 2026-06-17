@@ -39,27 +39,27 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* SOCIAL MEDIA & CONTACT */}
+        {/* CONTACT */}
         <div>
-          <H3 className="text-[18px] md:text-[20px] mb-[10px] font-semibold">Follow Us</H3>
-          <div className="flex gap-[15px] mt-[10px]">
-            <a href="#" className="text-white text-[18px] md:text-[20px] transition-all duration-300 hover:opacity-80"><i className="fab fa-twitter"></i></a>
-            <a href="#" className="text-white text-[18px] md:text-[20px] transition-all duration-300 hover:opacity-80"><i className="fab fa-facebook-f"></i></a>
-            <a href="#" className="text-white text-[18px] md:text-[20px] transition-all duration-300 hover:opacity-80"><i className="fab fa-instagram"></i></a>
-            <a href="#" className="text-white text-[18px] md:text-[20px] transition-all duration-300 hover:opacity-80"><i className="fab fa-linkedin-in"></i></a>
-          </div>
-
-          <div className="mt-[30px]">
-            <H3 className="text-[18px] md:text-[20px] mb-[10px] font-semibold">Contact</H3>
+          <H3 className="text-[18px] md:text-[20px] mb-[15px] font-semibold">Contact Us</H3>
+          <div>
             <p className="text-[14px] md:text-[15px] leading-[1.6] mb-[9px]">
               <strong>Email:</strong>{" "}
-              <a href="mailto:info@ignytotutoring.com" className="text-white no-underline hover:underline break-all">
-                info@ignytotutoring.com
+              <a href="mailto:info.ignyto@gmail.com" className="text-white no-underline hover:underline break-all">
+                info.ignyto@gmail.com
               </a>
             </p>
-            <p className="text-[14px] md:text-[15px] leading-[1.6] mb-[9px]">
-              <strong>Phone:</strong> +91 98765 43210
-            </p>
+            <div className="flex flex-wrap items-center gap-[10px] text-[14px] md:text-[15px] leading-[1.6] mt-[12px]">
+              <strong>Call/WhatsApp:</strong>
+              <a 
+                href="https://wa.me/917720077480" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center gap-[6px] bg-[#25D366] text-white px-[14px] py-[6px] rounded-[50px] text-[13px] md:text-[14px] font-bold transition-transform hover:-translate-y-[2px] shadow-sm"
+              >
+                <i className="fab fa-whatsapp text-[16px]"></i> +91 77200 77480
+              </a>
+            </div>
           </div>
         </div>
 

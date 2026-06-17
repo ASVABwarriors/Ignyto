@@ -11,7 +11,7 @@ export default function SummerCamps({ courses }: { courses: ExtendedCourse[] }) 
   const hasMore = courses.length > 4;
 
   return (
-    <section id="summer-camps" className="w-[90%] max-w-[1400px] mx-auto my-[80px]">
+    <section id="summer-camps" className="w-[90%] max-w-[1400px] mx-auto mt-[80px] mb-[30px] md:mb-[40px]">
       <div className="mb-[40px]">
         <span className="text-[12px] md:text-[14px] font-bold tracking-[2px] text-primary relative after:content-[''] after:w-[40px] md:after:w-[60px] after:h-[2px] after:bg-primary after:absolute after:top-1/2 after:ml-[12px]">
           THE FUTURE OF LEARNING
