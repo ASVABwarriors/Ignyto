@@ -31,7 +31,7 @@ export default function CourseCard({ course }: { course: ExtendedCourse }) {
           <p className="flex items-center gap-2"><FaCalendarAlt className="text-primary shrink-0" /> {course.duration}</p>
           <p className="flex items-center gap-2"><FaRegClock className="text-primary shrink-0" /> {course.dailyHours}</p>
           <p className="flex items-center gap-2 text-primary-dark text-[18px] md:text-[22px] font-bold mt-2 mb-2">
-            ONLY ${course.fee}
+            Only ${course.fee}
           </p>
 
           <p className="flex items-center gap-2"><FaBullseye className="text-primary shrink-0" /> {course.category}</p>
