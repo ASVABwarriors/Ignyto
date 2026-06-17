@@ -245,7 +245,7 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
               </button>
               
               <div className="text-center mt-2">
-                <p className="text-secondary font-bold tracking-wide text-xs">We reply within 24 hours!</p>
+                <p className="text-secondary font-bold tracking-wide text-xs">Meeting details will be emailed shortly.</p>
               </div>
             </form>
           )}
