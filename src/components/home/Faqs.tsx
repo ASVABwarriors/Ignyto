@@ -28,7 +28,7 @@ export default function Faqs({ initialFaqs }: { initialFaqs?: Faq[] }) {
   if (!faqs || faqs.length === 0) return null;
 
   return (
-    <section className="w-full bg-[#f4f8fe] py-[60px] md:py-[80px] px-4">
+    <section className="w-full bg-[#e8effa] py-[60px] md:py-[80px] px-4">
       <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-5 gap-[40px] md:gap-[60px]">
         
         {/* Left Side: Title & Description */}
