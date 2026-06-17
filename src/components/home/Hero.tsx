@@ -153,7 +153,7 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
                     {courses.map(course => (
                       <option key={course.id} value={course.id}>{course.title}</option>
                     ))}
-                    <option value="1-1-tutoring">1-1 Tutoring</option>
+                    <option value="1-1-tutoring">One to One Tutoring</option>
                   </select>
                 </div>
               </div>
