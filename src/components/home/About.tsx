@@ -1,9 +1,9 @@
 import { H2, H3 } from "@/components/ui/Heading";
-import { FaChalkboardTeacher, FaGraduationCap, FaBook, FaChartLine, FaMedal } from "react-icons/fa";
+import { FaBullseye, FaChalkboardTeacher, FaChartLine, FaTrophy, } from "react-icons/fa";
 export default function About() {
   return (
     <section id="about" className="bg-primary-light py-[20px] md:py-[30px]">
-      <div className="w-[90%] max-w-[1300px] mx-auto xl:grid xl:grid-cols-[1.2fr_1fr] gap-[40px] xl:gap-[60px] items-center">
+      <div className="w-[90%] max-w-[1300px] mx-auto xl:grid xl:grid-cols-[1.4fr_0.9fr] gap-[40px] xl:gap-[50px] items-center">
         
         {/* Left side: Text Content */}
         <div>
@@ -22,12 +22,12 @@ export default function About() {
               Through personalized tutoring, engaging summer camps, and enrichment programs, 
               we help students build confidence, strengthen skills, and achieve their academic goals.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[12px] md:gap-[18px] mt-[25px] md:mt-[35px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[12px] md:gap-[18px] mt-[20px] md:mt-[30px]">
               {[
-                { icon: <FaGraduationCap />, text: "Goal-Oriented Learning" },
-                { icon: <FaBook />, text: "Concept Mastery" },
-                { icon: <FaChartLine />, text: "Grade Improvement" },
-                { icon: <FaMedal />, text: "Confidence Building" }
+                { icon: <FaBullseye />, text: "Personalized Learning" },
+                { icon: <FaChalkboardTeacher />, text: "Experts Mentors" },
+                { icon: <FaChartLine />, text: "Measurable Progress" },
+                { icon: <FaTrophy />, text: "Academic Excellence" }
               ].map((feature, i) => (
                 <div key={i} className="bg-white px-[16px] py-[12px] md:px-[22px] md:py-[18px] rounded-[12px] md:rounded-[15px] font-semibold flex items-center gap-[10px] md:gap-[12px] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-[5px] hover:bg-primary hover:text-white group text-[14px] md:text-[16px]">
                   <span className="text-primary group-hover:text-white text-[18px] md:text-[22px]">{feature.icon}</span>
@@ -46,7 +46,7 @@ export default function About() {
         </div>
 
         <div className="mt-[30px] xl:mt-0 flex justify-center xl:justify-end w-full">
-          <div className="relative w-full max-w-[400px] md:max-w-[450px] group">
+          <div className="relative w-full max-w-[320px] md:max-w-[360px] group">
             <div className="absolute inset-0 border-[6px] border-transparent group-hover:border-primary rounded-[30px] z-10 transition-colors duration-300 pointer-events-none"></div>
             <img 
               src="https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781783045/AboutUs_s0him0.png" 
