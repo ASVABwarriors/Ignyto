@@ -27,21 +27,16 @@ export default function About() {
               Through personalized tutoring, engaging summer camps, and enrichment programs, 
               we help students build confidence, strengthen skills, and achieve their academic goals.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[12px] md:gap-[16px] mt-[25px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[12px] md:gap-[18px] mt-[25px] md:mt-[35px]">
               {[
-                [FaBullseye, "Personalized Learning"],
-                [FaChalkboardTeacher, "Expert Mentors"],
-                [FaChartLine, "Measurable Progress"],
-                [FaTrophy, "Academic Excellence"],
-              ].map(([Icon, text]) => (
-                <div
-                  key={text}
-                  className="flex items-center gap-3 bg-white px-5 py-4 rounded-[15px] shadow-[0_4px_15px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300"
-                >
-                  <Icon className="text-primary text-[20px]" />
-                  <span className="font-semibold text-[15px] md:text-[16px]">
-                    {text}
-                  </span>
+                { icon: <FaGraduationCap />, text: "Goal-Oriented Learning" },
+                { icon: <FaBook />, text: "Concept Mastery" },
+                { icon: <FaChartLine />, text: "Grade Improvement" },
+                { icon: <FaMedal />, text: "Confidence Building" }
+              ].map((feature, i) => (
+                <div key={i} className="bg-white px-[16px] py-[12px] md:px-[22px] md:py-[18px] rounded-[12px] md:rounded-[15px] font-semibold flex items-center gap-[10px] md:gap-[12px] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-[5px] hover:bg-primary hover:text-white group text-[14px] md:text-[16px]">
+                  <span className="text-primary group-hover:text-white text-[18px] md:text-[22px]">{feature.icon}</span>
+                  <span>{feature.text}</span>
                 </div>
               ))}
             </div>
