@@ -66,7 +66,7 @@ export default function Footer() {
       </div>
 
       <div className="w-full border-t border-white/20">
-        <div className="w-[90%] max-w-[1300px] mx-auto flex flex-col md:flex-row justify-between items-center py-[15px] md:py-[20px] text-[12px] md:text-[14px] gap-3">
+        <div className="w-[90%] max-w-[1300px] mx-auto flex justify-center items-center py-[15px] md:py-[20px] text-[12px] md:text-[14px]">
           <div className="text-center">
             © {new Date().getFullYear()} Ignyto Tutoring. All Rights Reserved.
           </div>
