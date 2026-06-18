@@ -11,7 +11,7 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
   const slides = [
     "https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781792957/Banner_1_negtgc.png", 
     "https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781793842/Banner_2_fhn5p2.png", 
-    "https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781622783/Banner3_twmfly.png"
+    "https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781794098/Banner_3_b2qj68.png"
   ];
 
   const [isSubmitting, setIsSubmitting] = useState(false);
