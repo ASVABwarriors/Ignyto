@@ -10,7 +10,7 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
   // with your full Cloudinary URLs (e.g., "https://res.cloudinary.com/your-id/image/upload/banner.png")
   const slides = [
     "https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781792957/Banner_1_negtgc.png", 
-    "https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781622783/Banner2_gtveul.png", 
+    "https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781793842/Banner_2_fhn5p2.png", 
     "https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781622783/Banner3_twmfly.png"
   ];
 
