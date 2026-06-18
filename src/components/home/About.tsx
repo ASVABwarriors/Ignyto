@@ -29,7 +29,7 @@ export default function About() {
                 { icon: <FaChartLine />, text: "Measurable Progress" },
                 { icon: <FaTrophy />, text: "Academic Excellence" }
               ].map((feature, i) => (
-                <div key={i} className="bg-white px-[16px] py-[12px] md:px-[22px] md:py-[18px] rounded-[12px] md:rounded-[15px] font-semibold flex items-center gap-[10px] md:gap-[12px] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-[5px] hover:bg-primary hover:text-white group text-[14px] md:text-[16px]">
+                <div key={i} className="bg-white px-[12px] py-[10px] md:px-[16px] md:py-[12px] rounded-[10px] md:rounded-[12px] font-semibold flex items-center gap-[8px] md:gap-[10px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-[3px] hover:bg-primary hover:text-white group text-[13px] md:text-[15px]">
                   <span className="text-primary group-hover:text-white text-[18px] md:text-[22px]">{feature.icon}</span>
                   <span>{feature.text}</span>
                 </div>
