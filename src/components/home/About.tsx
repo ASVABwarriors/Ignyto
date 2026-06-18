@@ -2,7 +2,7 @@ import { H2, H3 } from "@/components/ui/Heading";
 import { FaBullseye, FaChalkboardTeacher, FaChartLine, FaTrophy, } from "react-icons/fa";
 export default function About() {
   return (
-    <section id="about" className="bg-primary-light py-[20px] md:py-[30px]">
+    <section id="about" className="bg-primary-light py-[20px] md:py-[30px] pb-[60px] md:pb-[100px]">
       <div className="w-[90%] max-w-[1300px] mx-auto xl:grid xl:grid-cols-[1.4fr_0.9fr] gap-[40px] xl:gap-[50px] items-center">
         
         {/* Left side: Text Content */}
