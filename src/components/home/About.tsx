@@ -1,10 +1,5 @@
 import { H2, H3 } from "@/components/ui/Heading";
-import {
-  FaBullseye,
-  FaChalkboardTeacher,
-  FaChartLine,
-  FaTrophy,
-} from "react-icons/fa";
+import { FaChalkboardTeacher, FaGraduationCap, FaBook, FaChartLine, FaMedal } from "react-icons/fa";
 export default function About() {
   return (
     <section id="about" className="bg-primary-light py-[20px] md:py-[30px]">
