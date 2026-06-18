@@ -9,7 +9,7 @@ export default function Hero({ courses = [], trialSlots = [] }: { courses?: { id
   // You can easily use your Cloudinary links here. Just replace the local "/images/..." paths 
   // with your full Cloudinary URLs (e.g., "https://res.cloudinary.com/your-id/image/upload/banner.png")
   const slides = [
-    "https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781622783/Banner1_eeawpe.png", 
+    "https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781792957/Banner_1_negtgc.png", 
     "https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781622783/Banner2_gtveul.png", 
     "https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781622783/Banner3_twmfly.png"
   ];
