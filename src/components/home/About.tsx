@@ -17,17 +17,17 @@ export default function About() {
           
           <div className="p-0">
             <p className="text-[16px] md:text-[18px] leading-[1.6] md:leading-[1.8] text-[#333] mb-[20px] md:mb-[25px]">
-              Are you tired of the mundane and predictable questions that plague most Olympiad examinations? If you're looking for a refreshing
-              change, you've come to the right place! Our Olympiad Portal is
-              designed to inspire students with innovative challenges that
-              strengthen conceptual understanding and analytical
+              At IgNyto Tutoring, we believe every student can excel with the right guidance, support, and encouragement. 
+              Through personalized tutoring, engaging summer camps, and enrichment programs, 
+              we help students build confidence, strengthen skills, and achieve their academic goals.
             </p>
+            {/*
             <p className="text-[16px] md:text-[18px] leading-[1.6] md:leading-[1.8] text-[#333] mb-[25px]">
               We believe every student has untapped potential. Through
               carefully designed competitions, quality learning resources,
               and expert guidance, we help students achieve academic excellence
               and build confidence for future success.
-            </p>
+            </p> */}
           </div>
         </div>
 
@@ -35,7 +35,7 @@ export default function About() {
           <div className="relative w-full max-w-[400px] md:max-w-[450px] group">
             <div className="absolute inset-0 border-[6px] border-transparent group-hover:border-primary rounded-[30px] z-10 transition-colors duration-300 pointer-events-none"></div>
             <img 
-              src="https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781437035/Ignyto_logo_stprab.png" 
+              src="https://res.cloudinary.com/dtpkdwlwv/image/upload/v1781783045/AboutUs_s0him0.png" 
               alt="About Olympiad Portal" 
               className="w-full h-auto object-contain rounded-[30px] transition-transform duration-700 group-hover:scale-[1.05]" 
             />
