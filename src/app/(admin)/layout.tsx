@@ -40,6 +40,19 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           >
             Courses
           </Link>
+
+          <Link 
+            href="/admin/dashboard/grade-wise-camps" 
+            className="block px-4 py-3 rounded-xl text-sm font-semibold text-gray-700 hover:bg-primary-light hover:text-primary transition-colors"
+          >
+            Grade Wise Camps
+          </Link>
+          <Link 
+            href="/admin/dashboard/worksheets" 
+            className="block px-4 py-3 rounded-xl text-sm font-semibold text-gray-700 hover:bg-primary-light hover:text-primary transition-colors"
+          >
+            Worksheets
+          </Link>
           <Link 
             href="/admin/dashboard/payments" 
             className="block px-4 py-3 rounded-xl text-sm font-semibold text-gray-700 hover:bg-primary-light hover:text-primary transition-colors"

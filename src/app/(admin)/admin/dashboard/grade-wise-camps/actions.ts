@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
 
-export async function createCourse(formData: FormData) {
+export async function createGradeWiseCamp(formData: FormData) {
   const session = await getSession();
   if (!session || (session.role !== "ADMIN" && session.role !== "SUPERADMIN")) {
     return { error: "Unauthorized" };
@@ -34,7 +34,7 @@ export async function createCourse(formData: FormData) {
   const pdfUrl = formData.get("pdfUrl") as string | null;
 
   try {
-    await prisma.course.create({
+    await prisma.gradeWiseCamp.create({
       data: {
         title,
         slug,
@@ -63,14 +63,14 @@ export async function createCourse(formData: FormData) {
     return { error: "Failed to create course." };
   }
 
-  revalidatePath("/admin/dashboard/gradewise-camps");
+  revalidatePath("/admin/dashboard/grade-wise-camps");
   revalidatePath("/admin/dashboard");
-  revalidatePath("/courses");
+  revalidatePath("/grade-wise-camps");
   revalidatePath("/");
   return { success: true };
 }
 
-export async function updateCourse(id: string, formData: FormData) {
+export async function updateGradeWiseCamp(id: string, formData: FormData) {
   const session = await getSession();
   if (!session || (session.role !== "ADMIN" && session.role !== "SUPERADMIN")) {
     return { error: "Unauthorized" };
@@ -98,7 +98,7 @@ export async function updateCourse(id: string, formData: FormData) {
   const pdfUrl = formData.get("pdfUrl") as string | null;
 
   try {
-    await prisma.course.update({
+    await prisma.gradeWiseCamp.update({
       where: { id },
       data: {
         title,
@@ -129,25 +129,25 @@ export async function updateCourse(id: string, formData: FormData) {
     return { error: "Failed to update course." };
   }
 
-  revalidatePath("/admin/dashboard/gradewise-camps");
+  revalidatePath("/admin/dashboard/grade-wise-camps");
   revalidatePath("/admin/dashboard");
-  revalidatePath(`/course/${slug}`);
-  revalidatePath("/courses");
+  revalidatePath(`/grade-wise-camps/${slug}`);
+  revalidatePath("/grade-wise-camps");
   revalidatePath("/");
   return { success: true };
 }
 
-export async function deleteCourse(id: string) {
+export async function deleteGradeWiseCamp(id: string) {
   const session = await getSession();
   if (!session || (session.role !== "ADMIN" && session.role !== "SUPERADMIN")) {
     return { error: "Unauthorized" };
   }
 
-  await prisma.course.delete({ where: { id } });
+  await prisma.gradeWiseCamp.delete({ where: { id } });
 
-  revalidatePath("/admin/dashboard/gradewise-camps");
+  revalidatePath("/admin/dashboard/grade-wise-camps");
   revalidatePath("/admin/dashboard");
-  revalidatePath("/courses");
+  revalidatePath("/grade-wise-camps");
   revalidatePath("/");
   return { success: true };
 }

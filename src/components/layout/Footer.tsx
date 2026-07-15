@@ -66,14 +66,14 @@ export default function Footer() {
       </div>
 
       <div className="w-full border-t border-white/20">
-        <div className="w-[90%] max-w-[1300px] mx-auto flex justify-center items-center py-[15px] md:py-[20px] text-[12px] md:text-[14px]">
-          <div className="text-center">
+        <div className="w-[90%] max-w-[1300px] mx-auto flex flex-col md:flex-row justify-between items-center py-[15px] md:py-[20px] text-[12px] md:text-[14px] gap-4 md:gap-0">
+          <div className="text-center md:text-left text-white/80">
             © {new Date().getFullYear()} Ignyto Tutoring. All Rights Reserved.
           </div>
-          {/*
-          <div className="text-center md:text-right">
-            Crafted by <a href="https://www.nirmeva.com/?utm_source=ignyto_tutoring&utm_medium=footer_link&utm_campaign=portfolio_credit" target="_blank" rel="noopener noreferrer" className="hover:underline font-semibold text-white">Nirmeva</a>
-          </div> */}
+          
+          <div className="text-center md:text-right text-white/80">
+            Crafted by <a href="https://www.nirmeva.com/?utm_source=ignyto_tutoring&utm_medium=footer_link&utm_campaign=portfolio_credit" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors font-semibold">Nirmeva</a>
+          </div>
         </div>
       </div>
     </footer>

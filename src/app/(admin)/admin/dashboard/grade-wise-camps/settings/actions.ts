@@ -34,7 +34,7 @@ export async function updateSectionSetting(sectionName: string, formData: FormDa
     return { error: "Failed to update section settings." };
   }
 
-  revalidatePath("/admin/dashboard/gradewise-camps/settings");
+  revalidatePath("/admin/dashboard/grade-wise-camps/settings");
   revalidatePath("/");
   return { success: true };
 }

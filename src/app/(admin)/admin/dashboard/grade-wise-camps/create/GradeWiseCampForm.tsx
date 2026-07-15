@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { createCourse, updateCourse } from "../actions";
+import { createGradeWiseCamp, updateGradeWiseCamp } from "../actions";
 import FileUploadDropzone from "@/components/ui/FileUploadDropzone";
 import { H3 } from "@/components/ui/Heading";
 import TextEditor from "@/components/ui/TextEditor";
 
-export default function CourseForm({ initialData }: { initialData?: any }) {
+export default function GradeWiseCampForm({ initialData }: { initialData?: any }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -87,16 +87,16 @@ export default function CourseForm({ initialData }: { initialData?: any }) {
     try {
       let res;
       if (initialData?.id) {
-        res = await updateCourse(initialData.id, formData);
+        res = await updateGradeWiseCamp(initialData.id, formData);
       } else {
-        res = await createCourse(formData);
+        res = await createGradeWiseCamp(formData);
       }
 
       if (res.error) {
         setError(res.error);
         setLoading(false);
       } else {
-        router.push("/admin/dashboard/gradewise-camps");
+        router.push("/admin/dashboard/grade-wise-camps");
       }
     } catch (err) {
       setError("An unexpected error occurred.");
@@ -112,18 +112,18 @@ export default function CourseForm({ initialData }: { initialData?: any }) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="md:col-span-1">
-          <label className="block text-sm font-semibold text-primary-dark mb-1">Course Title</label>
+          <label className="block text-sm font-semibold text-primary-dark mb-1">Group Camp Title</label>
           <input type="text" name="title" defaultValue={initialData?.title} onChange={handleTitleChange} required className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" />
         </div>
 
         <div className="md:col-span-1">
           <label className="block text-sm font-semibold text-primary-dark mb-1">URL Slug</label>
           <input type="text" name="slug" value={slug} onChange={handleSlugChange} required className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-gray-50" />
-          <p className="text-xs text-gray-400 mt-1">This will be the URL: /courses/{slug}</p>
+          <p className="text-xs text-gray-400 mt-1">This will be the URL: /grade-wise-camps/{slug}</p>
         </div>
 
         <div className="md:col-span-2">
-          <label className="block text-sm font-semibold text-primary-dark mb-2">Course Description</label>
+          <label className="block text-sm font-semibold text-primary-dark mb-2">Group Camp Description</label>
           <input type="hidden" name="description" value={description} />
           <TextEditor value={description} onChange={setDescription} />
         </div>
@@ -135,7 +135,7 @@ export default function CourseForm({ initialData }: { initialData?: any }) {
 
         <div>
           <label className="block text-sm font-semibold text-primary-dark mb-1">Category</label>
-          <input type="text" name="category" value="Gradewise Group Camp" readOnly className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none bg-gray-100 text-gray-500 cursor-not-allowed" />
+          <input type="text" name="category" value="Group Camp" readOnly className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none bg-gray-100 text-gray-500 cursor-not-allowed" />
         </div>
 
         <div>
@@ -217,7 +217,7 @@ export default function CourseForm({ initialData }: { initialData?: any }) {
         <div className="md:col-span-2 grid grid-cols-1 gap-6 mt-4">
           <div className="bg-gray-50 p-6 rounded-2xl border border-gray-200 shadow-sm w-full">
             <div className="mb-2">
-              <span className="block text-sm font-semibold text-primary-dark">Course Thumbnail Image</span>
+              <span className="block text-sm font-semibold text-primary-dark">Group Camp Thumbnail Image</span>
               <span className="text-xs text-gray-500">Recommended size: 800 x 450px (16:9 ratio). This ensures the image looks perfect on the website.</span>
             </div>
             <FileUploadDropzone 
@@ -249,7 +249,7 @@ export default function CourseForm({ initialData }: { initialData?: any }) {
           disabled={loading}
           className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-xl font-bold text-lg transition-all shadow-sm hover:shadow-md disabled:opacity-50"
         >
-          {loading ? "Saving..." : initialData ? "Save Changes" : "Create Course"}
+          {loading ? "Saving..." : initialData ? "Save Changes" : "Create Group Camp"}
         </button>
       </div>
     </form>

@@ -20,7 +20,7 @@ export default function SettingsForm({ initialData }: { initialData?: any }) {
     if (bannerUrl) formData.append("bannerUrl", bannerUrl);
 
     try {
-      const res = await updateSectionSetting("gradewise-camps", formData);
+      const res = await updateSectionSetting("group-camps", formData);
       if (res.error) {
         setError(res.error);
       } else {
@@ -41,7 +41,7 @@ export default function SettingsForm({ initialData }: { initialData?: any }) {
       <div className="grid grid-cols-1 gap-6">
         <div>
           <label className="block text-sm font-semibold text-primary-dark mb-1">Section Title</label>
-          <input type="text" name="title" defaultValue={initialData?.title || "Gradewise Group Camp"} required className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" />
+          <input type="text" name="title" defaultValue={initialData?.title || "Grade Wise Camps"} required className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" />
         </div>
 
         <div>
@@ -58,7 +58,7 @@ export default function SettingsForm({ initialData }: { initialData?: any }) {
             label="Banner Image" 
             accept="image/*" 
             defaultUrl={bannerUrl} 
-            folder="sections/gradewise-camps"
+            folder="sections/grade-wise-camps"
             onUploadSuccess={(url) => setBannerUrl(url)} 
             showImagePreviews={true}
           />

@@ -2,6 +2,20 @@
 
 import { prisma } from "@/lib/prisma";
 
+export async function getInquiryData() {
+  const courses = await prisma.course.findMany({
+    select: { id: true, title: true },
+    orderBy: { createdAt: 'desc' }
+  });
+
+  const trialSlots = await prisma.freeTrialDate.findMany({
+    include: { timeSlots: true },
+    orderBy: { dateStr: 'asc' }
+  });
+
+  return { courses, trialSlots };
+}
+
 export async function submitInquiry(data: { name: string; email: string; phone: string; message: string; grade?: string; courseId?: string; city?: string; state?: string; trialDate?: string; trialTime?: string }) {
   try {
     const inquiry = await prisma.inquiry.create({

@@ -102,7 +102,37 @@ export async function POST(req: Request) {
             console.log(`Enrollment ${enrollmentId} is already confirmed.`);
           }
         } else {
-          console.log(`Enrollment ${enrollmentId} not found.`);
+          // Check if it's a Group Camp Enrollment
+          const gradeWiseCampEnrollment = await prisma.gradeWiseCampEnrollment.findUnique({
+            where: { id: enrollmentId },
+          });
+
+          if (gradeWiseCampEnrollment) {
+            if (gradeWiseCampEnrollment.status === "PENDING") {
+              const payment = await prisma.gradeWiseCampPayment.create({
+                data: {
+                  gradeWiseCampId: gradeWiseCampEnrollment.gradeWiseCampId,
+                  paypalOrderId: paypalOrderId,
+                  amount: amount,
+                  status: "COMPLETED",
+                },
+              });
+
+              await prisma.gradeWiseCampEnrollment.update({
+                where: { id: enrollmentId },
+                data: {
+                  paymentId: payment.id,
+                  status: "CONFIRMED",
+                },
+              });
+
+              console.log(`Webhook successfully processed for GradeWiseCampEnrollment: ${enrollmentId}`);
+            } else {
+              console.log(`GradeWiseCampEnrollment ${enrollmentId} is already confirmed.`);
+            }
+          } else {
+            console.log(`Enrollment ${enrollmentId} not found in any table.`);
+          }
         }
       }
     }

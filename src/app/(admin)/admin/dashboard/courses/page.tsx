@@ -24,12 +24,20 @@ export default async function CoursesPage() {
       <Breadcrumbs items={[{ label: "Courses" }]} />
       <div className="flex justify-between items-center bg-white p-6 rounded-2xl shadow-[0_5px_15px_rgba(0,0,0,0.05)] border border-primary-light">
         <H1 className="text-3xl font-bold text-primary-dark">Manage Courses</H1>
-        <Link 
-          href="/admin/dashboard/courses/create" 
-          className="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-xl font-bold transition-colors shadow-sm"
-        >
-          + Add New Course
-        </Link>
+        <div className="flex gap-3">
+          <Link 
+            href="/admin/dashboard/courses/payments" 
+            className="bg-accent hover:bg-accent-dark text-white px-6 py-2 rounded-xl font-bold transition-colors shadow-sm"
+          >
+            View Payments
+          </Link>
+          <Link 
+            href="/admin/dashboard/courses/create" 
+            className="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-xl font-bold transition-colors shadow-sm"
+          >
+            + Add New Course
+          </Link>
+        </div>
       </div>
 
       <div className="bg-white rounded-2xl shadow-[0_5px_20px_rgba(0,0,0,0.08)] border border-gray-100 overflow-hidden">

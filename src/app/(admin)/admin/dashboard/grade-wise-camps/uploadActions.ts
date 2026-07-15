@@ -7,7 +7,7 @@ cloudinary.config({
   secure: true,
 });
 
-export async function getCloudinarySignature(folder: string = "ignyto_courses") {
+export async function getCloudinarySignature(folder: string = "ignyto_group_camps") {
   const session = await getSession();
   if (!session || (session.role !== "ADMIN" && session.role !== "SUPERADMIN")) {
     throw new Error("Unauthorized");

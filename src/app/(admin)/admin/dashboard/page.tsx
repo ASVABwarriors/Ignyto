@@ -1,6 +1,7 @@
 import { H1, H2, H3, H4 } from "@/components/ui/Heading";
 import { getSession, destroySession } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 
 export default async function AdminDashboard() {
@@ -10,15 +11,36 @@ export default async function AdminDashboard() {
     redirect("/admin/login");
   }
 
-  const courses = await prisma.course.findMany({
-    orderBy: { createdAt: 'desc' }
-  });
+  const coursesCount = await prisma.course.count();
+  const gradeWiseCampsCount = await prisma.gradeWiseCamp.count();
+  const worksheetsCount = await prisma.worksheet.count();
+  const totalEnrollments = await prisma.enrollment.count() + await prisma.gradeWiseCampEnrollment.count();
 
-  const payments = await prisma.payment.findMany({
+  const coursePayments = await prisma.payment.findMany({
     orderBy: { createdAt: 'desc' },
-    take: 10,
+    take: 20,
     include: { course: true }
   });
+
+  const gradeWiseCampPayments = await prisma.gradeWiseCampPayment.findMany({
+    orderBy: { createdAt: 'desc' },
+    take: 20,
+    include: { gradeWiseCamp: true }
+  });
+
+  // Combine and sort payments
+  const allPayments = [
+    ...coursePayments.map(p => ({ ...p, type: 'Course', title: p.course.title })),
+    ...gradeWiseCampPayments.map(p => ({ ...p, type: 'Group Camp', title: p.gradeWiseCamp.title }))
+  ].sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime()).slice(0, 15);
+
+  const totalPaymentsCount = await prisma.payment.count() + await prisma.gradeWiseCampPayment.count();
+  
+  const allCoursePayments = await prisma.payment.findMany();
+  const allGradeWiseCampPayments = await prisma.gradeWiseCampPayment.findMany();
+  const totalRevenue = 
+    allCoursePayments.reduce((acc, p) => acc + (p.status === "COMPLETED" ? p.amount : 0), 0) +
+    allGradeWiseCampPayments.reduce((acc, p) => acc + (p.status === "COMPLETED" ? p.amount : 0), 0);
 
   const user = await prisma.user.findUnique({
     where: { id: session.userId }
@@ -50,67 +72,102 @@ export default async function AdminDashboard() {
 
       <div className="grid md:grid-cols-3 gap-6 mb-12">
         <div className="p-8 bg-white rounded-2xl shadow-[0_5px_20px_rgba(0,0,0,0.08)] border-l-4 border-primary hover:-translate-y-1 transition-transform">
-          <H3 className="text-gray-500 font-semibold mb-2 text-lg">Total Courses</H3>
-          <p className="text-4xl font-bold text-primary-dark">{courses.length}</p>
+          <H3 className="text-gray-500 font-semibold mb-2 text-lg">Total Enrollments</H3>
+          <p className="text-4xl font-bold text-primary-dark">{totalEnrollments}</p>
         </div>
         <div className="p-8 bg-white rounded-2xl shadow-[0_5px_20px_rgba(0,0,0,0.08)] border-l-4 border-secondary hover:-translate-y-1 transition-transform">
           <H3 className="text-gray-500 font-semibold mb-2 text-lg">Total Payments</H3>
-          <p className="text-4xl font-bold text-primary-dark">{payments.length}</p>
+          <p className="text-4xl font-bold text-primary-dark">{totalPaymentsCount}</p>
         </div>
         <div className="p-8 bg-white rounded-2xl shadow-[0_5px_20px_rgba(0,0,0,0.08)] border-l-4 border-accent hover:-translate-y-1 transition-transform">
           <H3 className="text-gray-500 font-semibold mb-2 text-lg">Revenue</H3>
           <p className="text-4xl font-bold text-primary-dark">
-            ${payments.reduce((acc, p) => acc + (p.status === "COMPLETED" ? p.amount : 0), 0)}
+            ${totalRevenue}
           </p>
         </div>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8">
-        {/* Manage Courses */}
-        <div className="bg-white rounded-2xl shadow-[0_5px_20px_rgba(0,0,0,0.08)] border border-gray-100 overflow-hidden">
+        {/* Quick Access */}
+        <div className="bg-white rounded-2xl shadow-[0_5px_20px_rgba(0,0,0,0.08)] border border-gray-100 overflow-hidden flex flex-col">
           <div className="bg-primary-light p-5 border-b border-gray-100">
-            <H2 className="text-xl font-bold text-primary-dark">Manage Courses</H2>
+            <H2 className="text-xl font-bold text-primary-dark">Manage Programs</H2>
           </div>
-          <div className="p-5 space-y-4">
-            {courses.length === 0 ? (
-              <p className="text-gray-500 text-center py-4">No courses available.</p>
-            ) : (
-              courses.map(c => (
-                <div key={c.id} className="flex justify-between items-center p-4 bg-bg-light rounded-xl border border-primary-light/50 hover:border-primary transition-colors">
-                  <div>
-                    <H4 className="font-bold text-primary-dark text-lg">{c.title}</H4>
-                    <p className="text-sm text-gray-600 mt-1">
-                      <span className="font-semibold text-accent">${c.fee}</span> | {c.duration}
-                    </p>
-                  </div>
-                  <button className="text-primary bg-primary-light px-4 py-2 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors">
-                    Edit
-                  </button>
-                </div>
-              ))
-            )}
+          <div className="p-8 flex-1 flex flex-col gap-6 justify-center">
+            <Link 
+              href="/admin/dashboard/courses"
+              className="flex items-center justify-between bg-bg-light border-2 border-primary-light p-6 rounded-2xl hover:border-primary hover:bg-white hover:shadow-md transition-all group"
+            >
+              <div>
+                <H3 className="text-2xl font-bold text-primary-dark mb-1 flex items-center gap-3">
+                  Courses 
+                  <span className="bg-primary/10 text-primary text-sm px-3 py-1 rounded-full">{coursesCount}</span>
+                </H3>
+                <p className="text-gray-500 text-sm">Manage all regular camps and courses</p>
+              </div>
+              <div className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl group-hover:scale-110 transition-transform shadow-sm">
+                →
+              </div>
+            </Link>
+
+            <Link 
+              href="/admin/dashboard/grade-wise-camps"
+              className="flex items-center justify-between bg-bg-light border-2 border-secondary/20 p-6 rounded-2xl hover:border-secondary hover:bg-white hover:shadow-md transition-all group"
+            >
+              <div>
+                <H3 className="text-2xl font-bold text-secondary mb-1 flex items-center gap-3">
+                  Grade Wise Camps
+                  <span className="bg-secondary/10 text-secondary text-sm px-3 py-1 rounded-full">{gradeWiseCampsCount}</span>
+                </H3>
+                <p className="text-gray-500 text-sm">Manage dedicated group collaboration camps</p>
+              </div>
+              <div className="bg-secondary text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl group-hover:scale-110 transition-transform shadow-sm">
+                →
+              </div>
+            </Link>
+
+            <Link 
+              href="/admin/dashboard/worksheets"
+              className="flex items-center justify-between bg-bg-light border-2 border-green-200 p-6 rounded-2xl hover:border-green-500 hover:bg-white hover:shadow-md transition-all group"
+            >
+              <div>
+                <H3 className="text-2xl font-bold text-green-600 mb-1 flex items-center gap-3">
+                  Worksheets
+                  <span className="bg-green-100 text-green-700 text-sm px-3 py-1 rounded-full">{worksheetsCount}</span>
+                </H3>
+                <p className="text-gray-500 text-sm">Manage free practice worksheets</p>
+              </div>
+              <div className="bg-green-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl group-hover:scale-110 transition-transform shadow-sm">
+                →
+              </div>
+            </Link>
           </div>
         </div>
 
         {/* Recent Transactions */}
-        <div className="bg-white rounded-2xl shadow-[0_5px_20px_rgba(0,0,0,0.08)] border border-gray-100 overflow-hidden">
-          <div className="bg-primary-light p-5 border-b border-gray-100">
-            <H2 className="text-xl font-bold text-primary-dark">Recent Transactions</H2>
+        <div className="bg-white rounded-2xl shadow-[0_5px_20px_rgba(0,0,0,0.08)] border border-gray-100 overflow-hidden flex flex-col h-[500px]">
+          <div className="bg-primary-light p-4 border-b border-gray-100 shrink-0">
+            <H2 className="text-lg font-bold text-primary-dark">Recent Transactions</H2>
           </div>
-          <div className="p-5 space-y-4">
-            {payments.length === 0 ? (
-              <p className="text-gray-500 text-center py-4">No recent transactions.</p>
+          <div className="p-4 space-y-3 overflow-y-auto flex-1 scrollbar-hide">
+            {allPayments.length === 0 ? (
+              <p className="text-gray-500 text-center py-4 text-sm">No recent transactions.</p>
             ) : (
-              payments.map(p => (
-                <div key={p.id} className="flex justify-between items-center p-4 bg-bg-light rounded-xl border border-primary-light/50">
+              allPayments.map(p => (
+                <div key={p.id} className="flex justify-between items-center p-3 bg-bg-light rounded-xl border border-primary-light/50 hover:bg-gray-50 transition-colors">
                   <div>
-                    <H4 className="font-bold text-primary-dark text-lg">{p.course.title}</H4>
-                    <p className="text-sm text-gray-500 mt-1 font-mono">ID: {p.paypalOrderId}</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <H4 className="font-bold text-primary-dark text-base">{p.title}</H4>
+                      <span className={`text-[10px] px-2 py-0.5 rounded-md font-bold ${p.type === 'Course' ? 'bg-blue-100 text-blue-700' : 'bg-teal-100 text-teal-700'}`}>
+                        {p.type}
+                      </span>
+                    </div>
+                    <p className="text-xs text-gray-500 font-mono">ID: {p.paypalOrderId}</p>
                   </div>
                   <div className="text-right">
-                    <p className="font-bold text-lg text-[#333]">${p.amount}</p>
+                    <p className="font-bold text-base text-[#333]">${p.amount}</p>
                     <div className="mt-1">
-                      <span className={`text-xs px-3 py-1 rounded-full font-bold ${p.status === 'COMPLETED' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
+                      <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${p.status === 'COMPLETED' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
                         {p.status}
                       </span>
                     </div>

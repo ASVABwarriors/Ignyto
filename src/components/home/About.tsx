@@ -3,7 +3,7 @@ import { FaBullseye, FaChalkboardTeacher, FaChartLine, FaTrophy, } from "react-i
 export default function About() {
   return (
     <section id="about" className="bg-primary-light py-[20px] md:py-[30px] pb-[50px] md:pb-[80px]">
-      <div className="w-[90%] max-w-[1300px] mx-auto xl:grid xl:grid-cols-[1.4fr_0.9fr] gap-[40px] xl:gap-[50px] items-center">
+      <div className="w-[90%] max-w-[1400px] mx-auto xl:grid xl:grid-cols-[1.4fr_0.9fr] gap-[40px] xl:gap-[50px] items-center">
         
         {/* Left side: Text Content */}
         <div>

@@ -4,33 +4,40 @@ import { redirect } from "next/navigation";
 import { H1, H2 } from "@/components/ui/Heading";
 import Link from "next/link";
 import { formatCourseDateShort, timezoneAbbreviationMap } from "@/lib/formatTime";
-import CourseListActions from "./CourseListActions";
+import GradeWiseCampListActions from "./GradeWiseCampListActions";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
-export default async function CoursesPage() {
+export default async function GradeWiseCampsPage() {
   const session = await getSession();
 
   if (!session || (session.role !== "ADMIN" && session.role !== "SUPERADMIN")) {
     redirect("/admin/login");
   }
 
-  const courses = await prisma.course.findMany({
-    where: { category: "Gradewise Group Camp" },
+  const gradeWiseCamps = await prisma.gradeWiseCamp.findMany({
     orderBy: { createdAt: "desc" },
     include: { dates: true }
   });
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
-      <Breadcrumbs items={[{ label: "Gradewise Camps" }]} />
+      <Breadcrumbs items={[{ label: "Grade Wise Camps" }]} />
       <div className="flex justify-between items-center bg-white p-6 rounded-2xl shadow-[0_5px_15px_rgba(0,0,0,0.05)] border border-primary-light">
-        <H1 className="text-3xl font-bold text-primary-dark">Manage Gradewise Camps</H1>
-        <Link 
-          href="/admin/dashboard/gradewise-camps/create" 
-          className="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-xl font-bold transition-colors shadow-sm"
-        >
-          + Add New Camp
-        </Link>
+        <H1 className="text-3xl font-bold text-primary-dark">Manage Grade Wise Camps</H1>
+        <div className="flex gap-3">
+          <Link 
+            href="/admin/dashboard/grade-wise-camps/payments" 
+            className="bg-accent hover:bg-accent-dark text-white px-6 py-2 rounded-xl font-bold transition-colors shadow-sm"
+          >
+            View Payments
+          </Link>
+          <Link 
+            href="/admin/dashboard/grade-wise-camps/create" 
+            className="bg-secondary hover:bg-secondary-dark text-white px-6 py-2 rounded-xl font-bold transition-colors shadow-sm"
+          >
+            + Add New Camp
+          </Link>
+        </div>
 
       </div>
 
@@ -47,14 +54,14 @@ export default async function CoursesPage() {
               </tr>
             </thead>
             <tbody>
-              {courses.length === 0 && (
+              {gradeWiseCamps.length === 0 && (
                 <tr>
                   <td colSpan={5} className="py-8 text-center text-gray-500">
                     No courses found. Create one to get started!
                   </td>
                 </tr>
               )}
-              {courses.map(c => {
+              {gradeWiseCamps.map(c => {
                 let displayDate = "TBD";
                 if (c.dates && c.dates.length > 0) {
                   displayDate = c.dates[0].dateStr;
@@ -83,18 +90,18 @@ export default async function CoursesPage() {
                     <td className="py-4 px-6 text-right">
                       <div className="flex justify-end gap-2">
                         <Link 
-                          href={`/admin/dashboard/gradewise-camps/view/${c.slug}`}
+                          href={`/admin/dashboard/grade-wise-camps/view/${c.slug}`}
                           className="px-3 py-1 bg-green-100 text-green-700 rounded-lg font-medium hover:bg-green-600 hover:text-white transition-colors"
                         >
                           View
                         </Link>
                         <Link 
-                          href={`/admin/dashboard/gradewise-camps/edit/${c.id}`} 
+                          href={`/admin/dashboard/grade-wise-camps/edit/${c.id}`} 
                           className="px-3 py-1 bg-primary-light text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition-colors"
                         >
                           Edit
                         </Link>
-                        <CourseListActions courseId={c.id} />
+                        <GradeWiseCampListActions courseId={c.id} />
                       </div>
                     </td>
                   </tr>

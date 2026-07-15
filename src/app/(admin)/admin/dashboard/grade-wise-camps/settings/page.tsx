@@ -1,38 +1,36 @@
 import { getSession } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 import { H1 } from "@/components/ui/Heading";
-import Link from "next/link";
-import CourseForm from "./CourseForm";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import SettingsForm from "./SettingsForm";
 
-export default async function CreateCoursePage() {
+export default async function GradewiseCampSettingsPage() {
   const session = await getSession();
 
   if (!session || (session.role !== "ADMIN" && session.role !== "SUPERADMIN")) {
     redirect("/admin/login");
   }
 
+  const settings = await prisma.sectionSetting.findUnique({
+    where: { sectionName: "group-camps" }
+  });
+
   return (
     <div className="space-y-8 max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
       <Breadcrumbs items={[
-        { label: "Gradewise Camps", href: "/admin/dashboard/gradewise-camps" },
-        { label: "Create Camp" }
+        { label: "Grade Wise Camps", href: "/admin/dashboard/grade-wise-camps" },
+        { label: "Settings" }
       ]} />
       <div className="flex justify-between items-center bg-white p-6 rounded-2xl shadow-[0_5px_15px_rgba(0,0,0,0.05)] border border-primary-light">
         <div>
-          <H1 className="text-3xl font-bold text-primary-dark">Create New Camp</H1>
-          <p className="text-[#555] mt-1">Fill in the details below to add a new gradewise camp.</p>
+          <H1 className="text-3xl font-bold text-primary-dark">Group Camp Settings</H1>
+          <p className="text-[#555] mt-1">Configure the banner image and text for the Grade Wise Camps section on the homepage.</p>
         </div>
-        <Link 
-          href="/admin/dashboard/gradewise-camps" 
-          className="text-gray-500 hover:text-primary font-semibold transition-colors"
-        >
-          Cancel
-        </Link>
       </div>
 
       <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-        <CourseForm />
+        <SettingsForm initialData={settings} />
       </div>
     </div>
   );
