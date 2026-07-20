@@ -84,12 +84,12 @@ export default function Header() {
       {/* Floating Overlay Free Trial Button */}
       <button
         onClick={() => setIsModalOpen(true)}
-        className="fixed bottom-[80px] md:bottom-[40px] right-[15px] md:right-[30px] bg-[#FFD700] text-black py-[12px] md:py-[15px] px-[20px] md:px-[30px] rounded-full font-bold shadow-[0_5px_20px_rgba(255,215,0,0.4)] z-[990] hover:scale-105 transition-all flex items-center gap-2 border-2 border-white text-sm md:text-base animate-bounce-slow"
+        className="fixed bottom-[80px] md:bottom-[40px] right-[15px] md:right-[20px] lg:right-[30px] bg-[#FFD700] text-black py-[8px] md:py-[10px] lg:py-[14px] px-[14px] md:px-[18px] lg:px-[26px] rounded-full font-bold shadow-[0_5px_20px_rgba(255,215,0,0.4)] z-[990] hover:scale-105 transition-all flex items-center gap-1.5 lg:gap-2 border-2 border-white text-xs md:text-sm lg:text-base animate-bounce-slow"
         style={{ animationDuration: '3s' }}
       >
-        <span className="relative flex h-3 w-3 md:h-4 md:w-4">
+        <span className="relative flex h-2 w-2 md:h-2.5 md:w-2.5 lg:h-3 lg:w-3">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-40"></span>
-          <span className="relative inline-flex rounded-full h-3 w-3 md:h-4 md:w-4 bg-black"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 lg:h-3 lg:w-3 bg-black"></span>
         </span>
         Book Free Trial
       </button>
