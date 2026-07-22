@@ -135,14 +135,7 @@ export default async function WorksheetDetailPage({ params }: { params: Promise<
               <p className="text-xs text-gray-500 mt-4 font-semibold">100% Free • No Sign Up Required</p>
             </div>
 
-            {/* Floating Hero Image (Dynamic) */}
-            {worksheet.heroImage && (
-              <img 
-                src={worksheet.heroImage} 
-                alt="Student learning" 
-                className="absolute -bottom-16 -left-16 lg:-left-32 w-64 md:w-80 lg:w-96 drop-shadow-2xl z-0 hidden md:block" 
-              />
-            )}
+
           </div>
         </div>
       </div>
