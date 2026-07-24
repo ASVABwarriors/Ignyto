@@ -186,6 +186,18 @@ model Worksheet {
   isFeatured         Boolean  @default(false) // Whether to show in the featured strip
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
+  downloads          WorksheetDownload[]
+}
+
+model WorksheetDownload {
+  id          String   @id @default(cuid())
+  worksheetId String
+  name        String
+  email       String
+  grade       String
+  createdAt   DateTime @default(now())
+  
+  worksheet   Worksheet @relation(fields: [worksheetId], references: [id], onDelete: Cascade)
 }
 
 model GradeWiseCamp {

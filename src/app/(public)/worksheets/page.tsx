@@ -14,7 +14,7 @@ export default async function WorksheetsPage() {
 
   return (
     <main className="bg-bg-light min-h-screen pb-20">
-      <div className="bg-primary pt-[120px] pb-20 px-5 text-center text-white">
+      <div className="bg-primary py-16 lg:py-20 px-5 text-center text-white">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Ignyto Worksheets Library</h1>
         <p className="text-lg md:text-xl max-w-2xl mx-auto opacity-90">
           Download high-quality, beautifully designed math worksheets. Perfect for home practice, teachers, and self-paced learning.
@@ -43,11 +43,11 @@ export default async function WorksheetsPage() {
                 </div>
                 
                 <div className="p-8 flex flex-col flex-1">
-                  <span className="text-sm font-bold text-secondary mb-2 uppercase tracking-wide">{worksheet.grade}</span>
-                  <h3 className="text-2xl font-bold text-primary-dark mb-3 leading-tight group-hover:text-primary transition-colors">
+                  <span className="text-xs font-bold text-secondary mb-2 uppercase tracking-wide">{worksheet.grade}</span>
+                  <h3 className="text-xl font-bold text-primary-dark mb-3 leading-tight group-hover:text-primary transition-colors">
                     {worksheet.title}
                   </h3>
-                  <p className="text-gray-600 mb-6 flex-1 line-clamp-2">
+                  <p className="text-sm text-gray-600 mb-6 flex-1 line-clamp-2">
                     {worksheet.description}
                   </p>
                   
@@ -64,7 +64,7 @@ export default async function WorksheetsPage() {
 
                   <Link 
                     href={`/worksheets/${worksheet.slug}`} 
-                    className="block text-center w-full py-4 bg-primary text-white rounded-xl font-bold text-lg shadow-[0_8px_20px_rgba(30,58,138,0.2)] hover:bg-primary-dark transition-colors"
+                    className="block text-center w-full py-3 bg-primary text-white rounded-xl font-bold text-base shadow-[0_8px_20px_rgba(30,58,138,0.2)] hover:bg-primary-dark transition-colors"
                   >
                     View Worksheet
                   </Link>

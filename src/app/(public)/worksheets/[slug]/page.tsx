@@ -5,6 +5,8 @@ import { FaBookOpen, FaClock, FaCheckCircle, FaFilePdf, FaDownload, FaCheck, FaH
 import Faqs from "@/components/home/Faqs";
 import PreviewGalleryModal from "@/components/ui/PreviewGalleryModal";
 import WorksheetCarousel from "@/components/ui/WorksheetCarousel";
+import WorksheetDownloadButton from "@/components/ui/WorksheetDownloadButton";
+import BookFreeTrialButton from "@/components/ui/BookFreeTrialButton";
 import { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -68,7 +70,7 @@ export default async function WorksheetDetailPage({ params }: { params: Promise<
   return (
     <main className="bg-bg-light min-h-screen">
       {/* 1. Top Section - Hero */}
-      <div className="bg-primary pt-16 md:pt-20 lg:pt-24 pb-12 lg:pb-16 px-5 relative overflow-hidden">
+      <div className="bg-primary py-16 lg:py-20 px-5 relative overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10">
           <div className="text-white space-y-4 lg:space-y-6">
             <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">
@@ -124,14 +126,11 @@ export default async function WorksheetDetailPage({ params }: { params: Promise<
                 )}
               </ul>
 
-              <a 
-                href={`/api/worksheets/${worksheet.slug}/download`}
-                download
-                className="flex flex-col items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white rounded-xl py-3 lg:py-4 font-bold text-base lg:text-lg transition-all shadow-[0_8px_20px_rgba(22,163,74,0.3)] hover:-translate-y-1"
-              >
-                <span className="flex items-center gap-2"><FaDownload /> Download PDF</span>
-                {worksheet.pdfPageCount && <span className="text-sm font-medium opacity-90 mt-1">({worksheet.pdfPageCount})</span>}
-              </a>
+              <WorksheetDownloadButton 
+                worksheetId={worksheet.id} 
+                slug={worksheet.slug} 
+                pdfPageCount={worksheet.pdfPageCount} 
+              />
               <p className="text-xs text-gray-500 mt-4 font-semibold">100% Free • No Sign Up Required</p>
             </div>
 
@@ -143,20 +142,20 @@ export default async function WorksheetDetailPage({ params }: { params: Promise<
       {/* 2. Concept & Preview Section (Side-by-side) */}
       {(worksheet.conceptImage || (worksheet.previewImages && worksheet.previewImages.length > 0)) && (
         <div className="w-full bg-white border-b border-gray-100">
-          <div className="max-w-7xl mx-auto px-5 py-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          <div className="max-w-7xl mx-auto px-5 py-12 md:py-16">
+            <div className="flex flex-col lg:flex-row gap-8 items-stretch">
               {/* Left: Concept Image */}
               {worksheet.conceptImage ? (
-                <div className="bg-white p-6 md:p-8 rounded-[30px] shadow-sm border-2 border-gray-200 h-full flex flex-col justify-center">
-                  <img src={worksheet.conceptImage} alt="Concept guide" className="w-full h-auto rounded-xl object-contain mx-auto" />
+                <div className="w-full lg:w-[65%] bg-white p-6 md:p-8 rounded-[30px] shadow-sm border-2 border-gray-200 h-[400px] md:h-[500px] lg:h-[600px] flex flex-col justify-center">
+                  <img src={worksheet.conceptImage} alt="Concept guide" className="w-full h-full object-contain mx-auto" />
                 </div>
               ) : (
-                <div className="hidden lg:block"></div>
+                <div className="hidden lg:w-[65%] lg:block"></div>
               )}
 
               {/* Right: Preview Gallery */}
               {worksheet.previewImages && worksheet.previewImages.length > 0 && (
-                <div>
+                <div className="w-full lg:w-[35%]">
                   <PreviewGalleryModal images={worksheet.previewImages} />
                 </div>
               )}
@@ -166,7 +165,7 @@ export default async function WorksheetDetailPage({ params }: { params: Promise<
       )}
 
       {/* 3. Learning Objectives & What's Included */}
-      <div className="max-w-7xl mx-auto px-5 py-24">
+      <div className="max-w-7xl mx-auto px-5 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
           {/* Left: What Students Will Learn (Dynamic from Backend) */}
           <div className="md:col-span-3 space-y-6">
@@ -221,7 +220,7 @@ export default async function WorksheetDetailPage({ params }: { params: Promise<
       </div>
 
       {/* 4. Why Parents Love (Fixed) */}
-      <div className="bg-[#FFFDF5] py-24 border-y border-yellow-100">
+      <div className="bg-[#FFFDF5] py-12 md:py-16 border-y border-yellow-100">
         <div className="max-w-7xl mx-auto px-5">
           <div className="text-center mb-12 relative">
             <h2 suppressHydrationWarning className="text-2xl md:text-3xl font-bold text-primary-dark flex items-center justify-center gap-3 mb-3">
@@ -263,7 +262,7 @@ export default async function WorksheetDetailPage({ params }: { params: Promise<
       </div>
 
       {/* 5. FAQs & Confident Box */}
-      <div className="max-w-7xl mx-auto px-5 py-24">
+      <div className="max-w-7xl mx-auto px-5 py-12 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
           <div className="lg:col-span-3">
             <h2 suppressHydrationWarning className="text-2xl md:text-3xl font-bold text-primary-dark mb-8">Frequently Asked Questions</h2>
@@ -369,12 +368,7 @@ export default async function WorksheetDetailPage({ params }: { params: Promise<
                 </div>
               </div>
               
-              <Link 
-                href="/#tutoring" 
-                className="block text-center w-full py-4 bg-green-600 text-white rounded-xl font-bold text-lg shadow-[0_8px_20px_rgba(22,163,74,0.3)] hover:bg-green-700 transition-colors mb-2"
-              >
-                Book a FREE Trial Lesson
-              </Link>
+              <BookFreeTrialButton />
               <p className="text-center text-xs text-gray-500 font-semibold uppercase tracking-wide">No commitment. Just help.</p>
             </div>
           </div>
@@ -383,7 +377,7 @@ export default async function WorksheetDetailPage({ params }: { params: Promise<
 
       {/* 6. Quick Links / Explore More */}
       {featuredWorksheets.length > 0 && (
-        <div className="bg-[#FFFDF5] py-24 border-t border-gray-100 overflow-hidden">
+        <div className="bg-[#FFFDF5] py-12 md:py-16 border-t border-gray-100 overflow-hidden">
           <div className="max-w-[1400px] mx-auto px-5 relative">
             <h2 suppressHydrationWarning className="text-2xl font-bold text-primary-dark mb-8">
               Explore More {worksheet.grade} Worksheets

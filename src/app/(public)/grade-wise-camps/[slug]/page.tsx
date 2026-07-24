@@ -60,9 +60,7 @@ export default async function GradeWiseCampDetailsPage({ params }: { params: Pro
 
   return (
     <div className="bg-gray-50 min-h-screen pb-[40px] pt-[40px] px-4">
-      <div className="w-full max-w-[1200px] mx-auto mb-6">
-        <H1 className="text-3xl md:text-4xl font-bold text-primary-dark">Grade Wise Camps</H1>
-      </div>
+
       <div className="w-full max-w-[1200px] mx-auto bg-white rounded-[30px] shadow-xl overflow-hidden border border-gray-100">
         
         {/* Header Image */}

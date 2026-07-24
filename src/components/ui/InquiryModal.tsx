@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { submitInquiry, getInquiryData } from "@/app/actions/inquiry";
 
 interface InquiryModalProps {
@@ -12,6 +13,7 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
   const [submitted, setSubmitted] = useState(false);
   const [courses, setCourses] = useState<any[]>([]);
   const [trialSlots, setTrialSlots] = useState<any[]>([]);
+  const [mounted, setMounted] = useState(false);
   const [formData, setFormData] = useState({ 
     name: "", email: "", phone: "", message: "", 
     grade: "", courseId: "", city: "", state: "", 
@@ -19,6 +21,7 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
   });
 
   useEffect(() => {
+    setMounted(true);
     if (isOpen) {
       getInquiryData().then(data => {
         setCourses(data.courses);
@@ -27,7 +30,7 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
     }
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,7 +49,7 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
     }
   };
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-2 sm:p-4 bg-black/60 backdrop-blur-sm" onClick={onClose}>
       <div 
         className="bg-white rounded-[16px] md:rounded-2xl shadow-2xl p-3 sm:p-4 md:p-5 w-full max-w-lg relative max-h-[95vh] md:max-h-[90vh] overflow-y-auto scrollbar-hide"
@@ -208,6 +211,7 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
           </form>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
